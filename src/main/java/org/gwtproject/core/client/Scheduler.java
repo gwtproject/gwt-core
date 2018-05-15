@@ -102,7 +102,7 @@ public abstract class Scheduler {
      * }
      * </pre>
      *
-     * @see com.google.gwt.dom.client.StyleInjector
+     * @see org.gwtproject.dom.client.StyleInjector
      */
     public abstract void scheduleFinally(ScheduledCommand cmd);
 
