@@ -96,6 +96,6 @@ public class JavaScriptObject {
         return instance != null && instance.<JsPropertyMap<Any>>cast().has("hashCode");
     }
 
-    @JsMethod(name = "equals")
+    @JsMethod(name = "hashCode")
     private native int callHashCode(Object obj);
 }
