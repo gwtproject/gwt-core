@@ -1,5 +1,6 @@
 package org.gwtproject.core.client;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
@@ -34,6 +35,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
      * @param index the index to be retrieved
      * @return the object at the given index, or <code>null</code> if none exists
      */
+    @JsOverlay
     public final T get(int index) {
       return this.<elemental2.core.JsArray<T>>cast().getAt(index);
     }
@@ -43,6 +45,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join() {
         return this.<elemental2.core.JsArray<T>>cast().join();
     }
@@ -52,6 +55,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join(String separator) {
       return this.<elemental2.core.JsArray<T>>cast().join(separator);
     }
@@ -61,6 +65,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
      *
      * @return the array length
      */
+    @JsOverlay
     public final int length() {
       return this.<elemental2.core.JsArray<T>>cast().length;
     }
@@ -68,6 +73,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
     /**
      * Pushes the given value onto the end of the array.
      */
+    @JsOverlay
     public final void push(T value) {
         this.<elemental2.core.JsArray<T>>cast().push(value);
     }
@@ -81,6 +87,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
      * @param index the index to be set
      * @param value the object to be stored
      */
+    @JsOverlay
     public final void set(int index, T value) {
         this.<elemental2.core.JsArray<T>>cast().setAt(index, value);
     }
@@ -90,6 +97,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
      *
      * @param newLength the new length of the array
      */
+    @JsOverlay
     public final void setLength(int newLength) {
       this.<elemental2.core.JsArray<T>>cast().length = newLength;
     }
@@ -99,6 +107,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
      *
      * @return the shifted value
      */
+    @JsOverlay
     public final T shift() {
       return this.<elemental2.core.JsArray<T>>cast().shift();
     }
@@ -108,6 +117,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
+    @JsOverlay
     public final void unshift(T value) {
         this.<elemental2.core.JsArray<T>>cast().unshift(value);
     }

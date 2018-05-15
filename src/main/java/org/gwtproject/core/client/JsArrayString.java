@@ -2,6 +2,7 @@ package org.gwtproject.core.client;
 
 import elemental2.core.JsArray;
 import elemental2.core.JsString;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
@@ -30,6 +31,7 @@ public class JsArrayString extends JavaScriptObject {
      * @param index the index to be retrieved
      * @return the value at the given index, or <code>null</code> if none exists
      */
+    @JsOverlay
     public final String get(int index) {
       return this.<JsArray<JsString>>cast().getAt(index).toString();
     }
@@ -39,6 +41,7 @@ public class JsArrayString extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join() {
         return this.<JsArray<JsString>>cast().join();
     }
@@ -48,6 +51,7 @@ public class JsArrayString extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join(String separator) {
       return this.<JsArray<JsString>>cast().join(separator);
     }
@@ -57,6 +61,7 @@ public class JsArrayString extends JavaScriptObject {
      *
      * @return the array length
      */
+    @JsOverlay
     public final int length() {
       return this.<JsArray<JsString>>cast().length;
     }
@@ -64,6 +69,7 @@ public class JsArrayString extends JavaScriptObject {
     /**
      * Pushes the given value onto the end of the array.
      */
+    @JsOverlay
     public final void push(String value) {
         this.<JsArray<JsString>>cast().push(Js.uncheckedCast(value));
     }
@@ -77,6 +83,7 @@ public class JsArrayString extends JavaScriptObject {
      * @param index the index to be set
      * @param value the value to be stored
      */
+    @JsOverlay
     public final void set(int index, String value) {
         this.<JsArray<JsString>>cast().setAt(index, Js.uncheckedCast(value));
     }
@@ -86,6 +93,7 @@ public class JsArrayString extends JavaScriptObject {
      *
      * @param newLength the new length of the array
      */
+    @JsOverlay
     public final void setLength(int newLength) {
         this.<JsArray<JsString>>cast().length = newLength;
     }
@@ -95,6 +103,7 @@ public class JsArrayString extends JavaScriptObject {
      *
      * @return the shifted value
      */
+    @JsOverlay
     public final String shift() {
       return this.<JsArray<JsString>>cast().shift().toString();
     }
@@ -104,6 +113,7 @@ public class JsArrayString extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
+    @JsOverlay
     public final void unshift(String value) {
         this.<JsArray<JsString>>cast().unshift(Js.uncheckedCast(value));
     }

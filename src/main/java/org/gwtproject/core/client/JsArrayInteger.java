@@ -1,5 +1,6 @@
 package org.gwtproject.core.client;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
@@ -33,6 +34,7 @@ public class JsArrayInteger extends JavaScriptObject {
      * @param index the index to be retrieved
      * @return the value at the given index
      */
+    @JsOverlay
     public final int get(int index) {
       return (int) (double) this.<elemental2.core.JsArray<Double>>cast().getAt(index);
     }
@@ -42,6 +44,7 @@ public class JsArrayInteger extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join() {
         return this.<elemental2.core.JsArray<Double>>cast().join();
     }
@@ -51,6 +54,7 @@ public class JsArrayInteger extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join(String separator) {
       return this.<elemental2.core.JsArray<Double>>cast().join(separator);
     }
@@ -60,6 +64,7 @@ public class JsArrayInteger extends JavaScriptObject {
      *
      * @return the array length
      */
+    @JsOverlay
     public final int length() {
       return this.<elemental2.core.JsArray<Double>>cast().length;
     }
@@ -67,6 +72,7 @@ public class JsArrayInteger extends JavaScriptObject {
     /**
      * Pushes the given integer onto the end of the array.
      */
+    @JsOverlay
     public final void push(int value) {
         this.<elemental2.core.JsArray<Double>>cast().push((double) value);
     }
@@ -80,6 +86,7 @@ public class JsArrayInteger extends JavaScriptObject {
      * @param index the index to be set
      * @param value the value to be stored
      */
+    @JsOverlay
     public final void set(int index, int value) {
         this.<elemental2.core.JsArray<Double>>cast().setAt(index, (double) value);
     }
@@ -89,6 +96,7 @@ public class JsArrayInteger extends JavaScriptObject {
      *
      * @param newLength the new length of the array
      */
+    @JsOverlay
     public final void setLength(int newLength) {
         this.<elemental2.core.JsArray<Double>>cast().length = newLength;
     }
@@ -98,6 +106,7 @@ public class JsArrayInteger extends JavaScriptObject {
      *
      * @return the shifted value
      */
+    @JsOverlay
     public final int shift() {
       return (int) (double) this.<elemental2.core.JsArray<Double>>cast().shift();
     }
@@ -107,6 +116,7 @@ public class JsArrayInteger extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
+    @JsOverlay
     public final void unshift(int value) {
         this.<elemental2.core.JsArray<Double>>cast().unshift((double) value);
     }

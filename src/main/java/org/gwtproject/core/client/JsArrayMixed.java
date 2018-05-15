@@ -1,5 +1,6 @@
 package org.gwtproject.core.client;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
@@ -32,6 +33,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * @param index the index to be retrieved
      * @return the object at the given index coerced to boolean.
      */
+    @JsOverlay
     public final boolean getBoolean(int index) {
       return Js.isTruthy(this.<elemental2.core.JsArray<Object>>cast().getAnyAt(index));
     }
@@ -42,6 +44,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * @param index the index to be retrieved
      * @return the object at the given index coerced to number.
      */
+    @JsOverlay
     public final double getNumber(int index) {
       return Js.coerceToDouble(this.<elemental2.core.JsArray<Object>>cast().getAnyAt(index));
     }
@@ -53,6 +56,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * @return the {@code JavaScriptObject} at the given index, or
      *         <code>null</code> if none exists
      */
+    @JsOverlay
     public final <T extends JavaScriptObject> T getObject(int index) {
       return this.<elemental2.core.JsArray<Object>>cast().getAt(index) != null ? this.<elemental2.core.JsArray<Object>>cast().getAnyAt(index).cast() : null;
     }
@@ -63,6 +67,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * @param index the index to be retrieved
      * @return the object at the given index, or <code>null</code> if none exists
      */
+    @JsOverlay
     public final String getString(int index) {
       Object value = this.<elemental2.core.JsArray<Object>>cast().getAt(index);
       return value == null ? null : value.toString();
@@ -73,6 +78,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join() {
         return this.<elemental2.core.JsArray<Object>>cast().join();
     }
@@ -82,6 +88,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join(String separator) {
       return this.<elemental2.core.JsArray<Object>>cast().join(separator);
     }
@@ -91,6 +98,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @return the array length
      */
+    @JsOverlay
     public final int length() {
       return this.<elemental2.core.JsArray<Object>>cast().length;
     }
@@ -98,6 +106,7 @@ public class JsArrayMixed extends JavaScriptObject {
     /**
      * Pushes the given boolean onto the end of the array.
      */
+    @JsOverlay
     public final void push(boolean value) {
         this.<elemental2.core.JsArray<Object>>cast().push(value);
     }
@@ -105,6 +114,7 @@ public class JsArrayMixed extends JavaScriptObject {
     /**
      * Pushes the given double onto the end of the array.
      */
+    @JsOverlay
     public final void push(double value) {
         this.<elemental2.core.JsArray<Object>>cast().push(value);
     }
@@ -112,6 +122,7 @@ public class JsArrayMixed extends JavaScriptObject {
     /**
      * Pushes the given {@link JavaScriptObject} onto the end of the array.
      */
+    @JsOverlay
     public final void push(JavaScriptObject value) {
         this.<elemental2.core.JsArray<Object>>cast().push(value);
     }
@@ -119,6 +130,7 @@ public class JsArrayMixed extends JavaScriptObject {
     /**
      * Pushes the given String onto the end of the array.
      */
+    @JsOverlay
     public final void push(String value) {
         this.<elemental2.core.JsArray<Object>>cast().push(value);
     }
@@ -132,6 +144,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * @param index the index to be set
      * @param value the boolean to be stored
      */
+    @JsOverlay
     public final void set(int index, boolean value) {
         this.<elemental2.core.JsArray<Object>>cast().setAt(index, value);
     }
@@ -145,6 +158,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * @param index the index to be set
      * @param value the double to be stored
      */
+    @JsOverlay
     public final void set(int index, double value) {
         this.<elemental2.core.JsArray<Object>>cast().setAt(index, value);
     }
@@ -158,6 +172,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * @param index the index to be set
      * @param value the {@link JavaScriptObject} to be stored
      */
+    @JsOverlay
     public final void set(int index, JavaScriptObject value) {
         this.<elemental2.core.JsArray<Object>>cast().setAt(index, value);
     }
@@ -171,6 +186,7 @@ public class JsArrayMixed extends JavaScriptObject {
      * @param index the index to be set
      * @param value the String to be stored
      */
+    @JsOverlay
     public final void set(int index, String value) {
         this.<elemental2.core.JsArray<Object>>cast().setAt(index, value);
     }
@@ -180,6 +196,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @param newLength the new length of the array
      */
+    @JsOverlay
     public final void setLength(int newLength) {
         this.<elemental2.core.JsArray<Object>>cast().length = newLength;
     }
@@ -189,6 +206,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @return the shifted item coerced to a boolean
      */
+    @JsOverlay
     public final boolean shiftBoolean() {
       return Js.isTruthy(this.<elemental2.core.JsArray<Object>>cast().shift());
     }
@@ -198,6 +216,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @return the shifted item coerced to a number
      */
+    @JsOverlay
     public final double shiftNumber() {
       return Js.coerceToDouble(this.<elemental2.core.JsArray<Object>>cast().shift());
     }
@@ -207,6 +226,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @return the shifted {@link JavaScriptObject}
      */
+    @JsOverlay
     public final <T extends JavaScriptObject> T shiftObject() {
       return Js.uncheckedCast(this.<elemental2.core.JsArray<Object>>cast().shift());
     }
@@ -216,6 +236,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @return the shifted String
      */
+    @JsOverlay
     public final String shiftString() {
       return this.<elemental2.core.JsArray<Object>>cast().shift().toString();
     }
@@ -225,6 +246,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
+    @JsOverlay
     public final void unshift(boolean value) {
         this.<elemental2.core.JsArray<Object>>cast().unshift(value);
     }
@@ -234,6 +256,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @param value the value to store
      */
+    @JsOverlay
     public final void unshift(double value) {
         this.<elemental2.core.JsArray<Object>>cast().unshift(value);
     }
@@ -243,6 +266,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @param value the value to store
      */
+    @JsOverlay
     public final void unshift(JavaScriptObject value) {
         this.<elemental2.core.JsArray<Object>>cast().unshift(value);
     }
@@ -252,6 +276,7 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @param value the value to store
      */
+    @JsOverlay
     public final void unshift(String value) {
         this.<elemental2.core.JsArray<Object>>cast().unshift(value);
     }

@@ -2,6 +2,7 @@ package org.gwtproject.core.client;
 
 import elemental2.core.JsArray;
 import elemental2.core.JsNumber;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
@@ -37,6 +38,7 @@ public class JsArrayNumber extends JavaScriptObject {
      * @param index the index to be retrieved
      * @return the value at the given index
      */
+    @JsOverlay
     public final double get(int index)  {
         return this.<JsArray<JsNumber>>cast().getAt(index).valueOf();
     }
@@ -46,6 +48,7 @@ public class JsArrayNumber extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join() {
         return this.<JsArray<JsNumber>>cast().join();
     }
@@ -55,6 +58,7 @@ public class JsArrayNumber extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join(String separator)  {
         return this.<JsArray<JsNumber>>cast().join(separator);
     }
@@ -64,6 +68,7 @@ public class JsArrayNumber extends JavaScriptObject {
      *
      * @return the array length
      */
+    @JsOverlay
     public final int length()  {
         return this.<JsArray<JsNumber>>cast().length;
     }
@@ -71,6 +76,7 @@ public class JsArrayNumber extends JavaScriptObject {
     /**
      * Pushes the given number onto the end of the array.
      */
+    @JsOverlay
     public final void push(double value)  {
         this.<JsArray<JsNumber>>cast().push(Js.uncheckedCast(value));
     }
@@ -84,6 +90,7 @@ public class JsArrayNumber extends JavaScriptObject {
      * @param index the index to be set
      * @param value the value to be stored
      */
+    @JsOverlay
     public final void set(int index, double value)  {
         this.<JsArray<JsNumber>>cast().setAt(index, Js.uncheckedCast(value));
     }
@@ -93,6 +100,7 @@ public class JsArrayNumber extends JavaScriptObject {
      *
      * @param newLength the new length of the array
      */
+    @JsOverlay
     public final void setLength(int newLength)  {
         this.<JsArray<JsNumber>>cast().length = newLength;
     }
@@ -102,6 +110,7 @@ public class JsArrayNumber extends JavaScriptObject {
      *
      * @return the shifted value
      */
+    @JsOverlay
     public final double shift()  {
         return this.<JsArray<JsNumber>>cast().shift().valueOf();
     }
@@ -111,6 +120,7 @@ public class JsArrayNumber extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
+    @JsOverlay
     public final void unshift(double value)  {
         this.<JsArray<JsNumber>>cast().unshift(Js.uncheckedCast(value));
     }

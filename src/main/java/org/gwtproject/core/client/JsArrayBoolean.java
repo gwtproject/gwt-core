@@ -1,6 +1,6 @@
 package org.gwtproject.core.client;
 
-import elemental2.core.JsBoolean;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
@@ -32,6 +32,7 @@ public class JsArrayBoolean extends JavaScriptObject {
      * @param index the index to be retrieved
      * @return the value at the given index
      */
+    @JsOverlay
     public final boolean get(int index) {
         return this.<elemental2.core.JsArray<Boolean>>cast().getAt(index);
     }
@@ -41,6 +42,7 @@ public class JsArrayBoolean extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join() {
         return this.<elemental2.core.JsArray<Boolean>>cast().join();
     }
@@ -50,6 +52,7 @@ public class JsArrayBoolean extends JavaScriptObject {
      * separator. The value returned from this method may vary between browsers
      * based on how JavaScript values are converted into strings.
      */
+    @JsOverlay
     public final String join(String separator) {
         return this.<elemental2.core.JsArray<Boolean>>cast().join(separator);
     }
@@ -59,6 +62,7 @@ public class JsArrayBoolean extends JavaScriptObject {
      *
      * @return the array length
      */
+    @JsOverlay
     public final int length() {
         return this.<elemental2.core.JsArray<Boolean>>cast().length;
     }
@@ -66,6 +70,7 @@ public class JsArrayBoolean extends JavaScriptObject {
     /**
      * Pushes the given boolean onto the end of the array.
      */
+    @JsOverlay
     public final void push(boolean value) {
         this.<elemental2.core.JsArray<Boolean>>cast().push(value);
     }
@@ -79,6 +84,7 @@ public class JsArrayBoolean extends JavaScriptObject {
      * @param index the index to be set
      * @param value the value to be stored
      */
+    @JsOverlay
     public final void set(int index, boolean value) {
         this.<elemental2.core.JsArray<Boolean>>cast().setAt(index, value);
     }
@@ -88,6 +94,7 @@ public class JsArrayBoolean extends JavaScriptObject {
      *
      * @param newLength the new length of the array
      */
+    @JsOverlay
     public final void setLength(int newLength) {
         this.<elemental2.core.JsArray<Boolean>>cast().length = newLength;
     }
@@ -97,6 +104,7 @@ public class JsArrayBoolean extends JavaScriptObject {
      *
      * @return the shifted value
      */
+    @JsOverlay
     public final boolean shift() {
         return this.<elemental2.core.JsArray<Boolean>>cast().shift();
     }
@@ -106,6 +114,7 @@ public class JsArrayBoolean extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
+    @JsOverlay
     public final void unshift(boolean value) {
         this.<elemental2.core.JsArray<Boolean>>cast().unshift(value);
     }
