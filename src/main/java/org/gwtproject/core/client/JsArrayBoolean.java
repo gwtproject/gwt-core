@@ -71,10 +71,7 @@ public class JsArrayBoolean extends JavaScriptObject {
     /**
      * Pushes the given boolean onto the end of the array.
      */
-    @JsOverlay
-    public final void push(boolean value) {
-        this.<elemental2.core.JsArray<Boolean>>cast().push(value);
-    }
+    public native final void push(boolean value);
 
     /**
      * Sets the value value at a given index.
@@ -115,9 +112,6 @@ public class JsArrayBoolean extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
-    @JsOverlay
-    public final void unshift(boolean value) {
-        this.<elemental2.core.JsArray<Boolean>>cast().unshift(value);
-    }
+    public native final void unshift(boolean value);
 }
 

@@ -73,10 +73,7 @@ public class JsArrayInteger extends JavaScriptObject {
     /**
      * Pushes the given integer onto the end of the array.
      */
-    @JsOverlay
-    public final void push(int value) {
-        this.<elemental2.core.JsArray<Double>>cast().push((double) value);
-    }
+    public native final void push(int value);
 
     /**
      * Sets the value value at a given index.
@@ -117,8 +114,5 @@ public class JsArrayInteger extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
-    @JsOverlay
-    public final void unshift(int value) {
-        this.<elemental2.core.JsArray<Double>>cast().unshift((double) value);
-    }
+    public final native void unshift(int value);
 }

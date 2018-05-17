@@ -1,5 +1,6 @@
 package org.gwtproject.core.client;
 
+import elemental2.core.JsArray;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
@@ -107,34 +108,22 @@ public class JsArrayMixed extends JavaScriptObject {
     /**
      * Pushes the given boolean onto the end of the array.
      */
-    @JsOverlay
-    public final void push(boolean value) {
-        this.<elemental2.core.JsArray<Object>>cast().push(value);
-    }
+    public native final void push(boolean value);
 
     /**
      * Pushes the given double onto the end of the array.
      */
-    @JsOverlay
-    public final void push(double value) {
-        this.<elemental2.core.JsArray<Object>>cast().push(value);
-    }
+    public native final void push(double value);
 
     /**
      * Pushes the given {@link JavaScriptObject} onto the end of the array.
      */
-    @JsOverlay
-    public final void push(JavaScriptObject value) {
-        this.<elemental2.core.JsArray<Object>>cast().push(value);
-    }
+    public native final void push(JavaScriptObject value);
 
     /**
      * Pushes the given String onto the end of the array.
      */
-    @JsOverlay
-    public final void push(String value) {
-        this.<elemental2.core.JsArray<Object>>cast().push(value);
-    }
+    public native final void push(String value);
 
     /**
      * Sets the boolean value at a given index.
@@ -239,7 +228,8 @@ public class JsArrayMixed extends JavaScriptObject {
      */
     @JsOverlay
     public final String shiftString() {
-      return this.<elemental2.core.JsArray<Object>>cast().shift().toString();
+        Object value = this.<JsArray<Object>>cast().shift();
+        return value == null ? null : value.toString();
     }
 
     /**
@@ -247,40 +237,28 @@ public class JsArrayMixed extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
-    @JsOverlay
-    public final void unshift(boolean value) {
-        this.<elemental2.core.JsArray<Object>>cast().unshift(value);
-    }
+    public native final void unshift(boolean value);
 
     /**
      * Shifts a double onto the beginning of the array.
      *
      * @param value the value to store
      */
-    @JsOverlay
-    public final void unshift(double value) {
-        this.<elemental2.core.JsArray<Object>>cast().unshift(value);
-    }
+    public native final void unshift(double value);
 
     /**
      * Shifts a {@link JavaScriptObject} onto the beginning of the array.
      *
      * @param value the value to store
      */
-    @JsOverlay
-    public final void unshift(JavaScriptObject value) {
-        this.<elemental2.core.JsArray<Object>>cast().unshift(value);
-    }
+    public native final void unshift(JavaScriptObject value);
 
     /**
      * Shifts a String onto the beginning of the array.
      *
      * @param value the value to store
      */
-    @JsOverlay
-    public final void unshift(String value) {
-        this.<elemental2.core.JsArray<Object>>cast().unshift(value);
-    }
+    public native final void unshift(String value);
 
 }
 

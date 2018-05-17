@@ -71,10 +71,7 @@ public class JsArrayString extends JavaScriptObject {
     /**
      * Pushes the given value onto the end of the array.
      */
-    @JsOverlay
-    public final void push(String value) {
-        this.<JsArray<JsString>>cast().push(Js.uncheckedCast(value));
-    }
+    public native final void push(String value);
 
     /**
      * Sets the value value at a given index.

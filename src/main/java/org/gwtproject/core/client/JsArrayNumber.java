@@ -77,10 +77,7 @@ public class JsArrayNumber extends JavaScriptObject {
     /**
      * Pushes the given number onto the end of the array.
      */
-    @JsOverlay
-    public final void push(double value) {
-        this.<JsArray<JsNumber>>cast().push(Js.uncheckedCast(value));
-    }
+    public native final void push(double value);
 
     /**
      * Sets the value value at a given index.

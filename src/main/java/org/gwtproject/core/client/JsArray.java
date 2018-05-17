@@ -74,10 +74,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
     /**
      * Pushes the given value onto the end of the array.
      */
-    @JsOverlay
-    public final void push(T value) {
-        this.<elemental2.core.JsArray<T>>cast().push(value);
-    }
+    public native final void push(T value);
 
     /**
      * Sets the object value at a given index.
@@ -118,8 +115,5 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
      *
      * @param value the value to the stored
      */
-    @JsOverlay
-    public final void unshift(T value) {
-        this.<elemental2.core.JsArray<T>>cast().unshift(value);
-    }
+    public native final void unshift(T value);
 }
