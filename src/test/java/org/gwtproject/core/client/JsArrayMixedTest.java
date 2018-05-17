@@ -1,7 +1,5 @@
 package org.gwtproject.core.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArrayMixed;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -9,17 +7,17 @@ import com.google.gwt.junit.client.GWTTestCase;
  */
 public class JsArrayMixedTest extends GWTTestCase {
 
-    private static class JsTestFruit extends com.google.gwt.core.client.JavaScriptObject {
+    private static class JsTestFruit extends JavaScriptObject {
         @SuppressWarnings("unused")
         protected JsTestFruit() {
         }
     }
 
-    com.google.gwt.core.client.JsArrayMixed mixedArray;
+    JsArrayMixed mixedArray;
 
     @Override
     public String getModuleName() {
-        return "org.gwtproject.core.Core";
+        return "org.gwtproject.core.CoreTest";
     }
 
     @Override
@@ -142,10 +140,10 @@ public class JsArrayMixedTest extends GWTTestCase {
 
     public void testShiftObject() {
         assertEquals(5, mixedArray.length());
-        assertEquals("true", mixedArray.<com.google.gwt.core.client.JavaScriptObject>shiftObject().toString());
+        assertEquals("true", mixedArray.<JavaScriptObject>shiftObject().toString());
         assertEquals(4, mixedArray.length());
-        assertEquals("2.5", mixedArray.<com.google.gwt.core.client.JavaScriptObject>shiftObject().toString());
-        assertEquals("1", mixedArray.<com.google.gwt.core.client.JavaScriptObject>shiftObject().toString());
+        assertEquals("2.5", mixedArray.<JavaScriptObject>shiftObject().toString());
+        assertEquals("1", mixedArray.<JavaScriptObject>shiftObject().toString());
         assertTrue(compareObjects(makeObject("pear"),
                 mixedArray.<JsTestFruit> shiftObject()));
         assertEquals(1, mixedArray.length());
@@ -192,7 +190,7 @@ public class JsArrayMixedTest extends GWTTestCase {
     }
 
     public void testEdgeCases() {
-        com.google.gwt.core.client.JsArrayMixed weirdArray = makeEdgeCaseArray();
+        JsArrayMixed weirdArray = makeEdgeCaseArray();
 
         // boolean values
         assertFalse(weirdArray.getBoolean(0));
@@ -234,7 +232,7 @@ public class JsArrayMixedTest extends GWTTestCase {
         assertEquals("1", weirdArray.getString(10));
     }
 
-    private native boolean compareObjects(com.google.gwt.core.client.JavaScriptObject expected,
+    private native boolean compareObjects(JavaScriptObject expected,
                                           JavaScriptObject actual) /*-{
       for (key in expected) {
         if (expected[key] != actual[key]) {
@@ -244,7 +242,7 @@ public class JsArrayMixedTest extends GWTTestCase {
       return true;
     }-*/;
 
-    private native com.google.gwt.core.client.JsArrayMixed makeArray() /*-{
+    private native JsArrayMixed makeArray() /*-{
       return [true, 2.5, 1, {kind: "pear"}, "orange"];
     }-*/;
 

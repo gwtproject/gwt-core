@@ -34,7 +34,8 @@ public class JsArrayString extends JavaScriptObject {
      */
     @JsOverlay
     public final String get(int index) {
-      return this.<JsArray<JsString>>cast().getAt(index).toString();
+        JsString value = this.<JsArray<JsString>>cast().getAt(index);
+        return value == null ? null : value.toString_();
     }
 
     /**
@@ -104,18 +105,12 @@ public class JsArrayString extends JavaScriptObject {
      *
      * @return the shifted value
      */
-    @JsOverlay
-    public final String shift() {
-      return this.<JsArray<JsString>>cast().shift().toString();
-    }
+    public final native String shift();
 
     /**
      * Shifts a value onto the beginning of the array.
      *
      * @param value the value to the stored
      */
-    @JsOverlay
-    public final void unshift(String value) {
-        this.<JsArray<JsString>>cast().unshift(Js.uncheckedCast(value));
-    }
+    public final native void unshift(String value);
 }

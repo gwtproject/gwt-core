@@ -1,40 +1,36 @@
 package org.gwtproject.core.client;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.JsArrayBoolean;
-import com.google.gwt.core.client.JsArrayInteger;
-import com.google.gwt.core.client.JsArrayNumber;
-import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.junit.client.GWTTestCase;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * Tests JsArray variants.
  */
 public class JsArrayTest extends GWTTestCase {
 
+    @JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
     private static class JsPoint extends JavaScriptObject {
         protected JsPoint() {
         }
 
-        public final native int x() /*-{
-          return this.x;
-        }-*/;
+        @JsProperty(name = "x")
+        public final native int x();
 
-        public final native int y() /*-{
-          return this.y;
-        }-*/;
+        @JsProperty(name = "y")
+        public final native int y();
     }
 
     @Override
     public String getModuleName() {
-        return "org.gwtproject.core.Core";
+        return "org.gwtproject.core.CoreTest";
     }
 
     public void testJsArray() {
         // All the test arrays start with 3 elements.
-        com.google.gwt.core.client.JsArray<JsPoint> jsArray = makeJsArray();
+        JsArray<JsPoint> jsArray = makeJsArray();
         assertEquals(3, jsArray.length());
 
         // Get the three points and make sure they are what we think.
@@ -64,9 +60,9 @@ public class JsArrayTest extends GWTTestCase {
 
         // Stick a non-JSO value in the '4' slot. Getting it should cause a type
         // error in Development Mode.
-        if (!com.google.gwt.core.client.GWT.isScript()) {
+        if (!GWT.isScript()) {
             try {
-                jsArray.<com.google.gwt.core.client.JsArrayString> cast().set(4, "bubba");
+                jsArray.<JsArrayString> cast().set(4, "bubba");
                 jsArray.get(4);
                 fail("Expected an exception getting an invalid value in Development Mode");
             } catch (Exception e) {
@@ -79,7 +75,7 @@ public class JsArrayTest extends GWTTestCase {
 
     public void testJsArrayBoolean() {
         // All the test arrays start with 3 elements.
-        com.google.gwt.core.client.JsArrayBoolean jsArray = makeJsArrayBoolean();
+        JsArrayBoolean jsArray = makeJsArrayBoolean();
         assertEquals(3, jsArray.length());
 
         // Get the three points and make sure they are what we think.
@@ -92,7 +88,7 @@ public class JsArrayTest extends GWTTestCase {
 
         // Make sure getting the '3' element throws an exception in Development Mode
         // (this won't happen in Production Mode).
-        if (!com.google.gwt.core.client.GWT.isScript()) {
+        if (!GWT.isScript()) {
             try {
                 jsArray.get(3);
                 fail("Expected an exception getting an invalid value in Development Mode");
@@ -108,9 +104,9 @@ public class JsArrayTest extends GWTTestCase {
 
         // Stick a non-boolean value in the '4' slot. Getting it should cause a type
         // error in Development Mode.
-        if (!com.google.gwt.core.client.GWT.isScript()) {
+        if (!GWT.isScript()) {
             try {
-                jsArray.<com.google.gwt.core.client.JsArrayString> cast().set(4, "bubba");
+                jsArray.<JsArrayString> cast().set(4, "bubba");
                 jsArray.get(4);
                 fail("Expected an exception getting an invalid value in Development Mode");
             } catch (Exception e) {
@@ -133,7 +129,7 @@ public class JsArrayTest extends GWTTestCase {
 
     public void testJsArrayInteger() {
         // All the test arrays start with 3 elements.
-        com.google.gwt.core.client.JsArrayInteger jsArray = makeJsArrayInteger();
+        JsArrayInteger jsArray = makeJsArrayInteger();
         assertEquals(3, jsArray.length());
 
         // Get the three points and make sure they are what we think.
@@ -146,7 +142,7 @@ public class JsArrayTest extends GWTTestCase {
 
         // Make sure getting the '3' element throws an exception in Development Mode
         // (this won't happen in Production Mode).
-        if (!com.google.gwt.core.client.GWT.isScript()) {
+        if (!GWT.isScript()) {
             try {
                 jsArray.get(3);
                 fail("Expected an exception getting an invalid value in Development Mode");
@@ -162,9 +158,9 @@ public class JsArrayTest extends GWTTestCase {
 
         // Stick a non-numeric value in the '4' slot. Getting it should cause a type
         // error in Development Mode.
-        if (!com.google.gwt.core.client.GWT.isScript()) {
+        if (!GWT.isScript()) {
             try {
-                jsArray.<com.google.gwt.core.client.JsArrayString> cast().set(4, "bubba");
+                jsArray.<JsArrayString> cast().set(4, "bubba");
                 jsArray.get(4);
                 fail("Expected an exception getting an invalid value in Development Mode");
             } catch (Exception e) {
@@ -187,7 +183,7 @@ public class JsArrayTest extends GWTTestCase {
 
     public void testJsArrayNumber() {
         // All the test arrays start with 3 elements.
-        com.google.gwt.core.client.JsArrayNumber jsArray = makeJsArrayNumber();
+        JsArrayNumber jsArray = makeJsArrayNumber();
         assertEquals(3, jsArray.length());
 
         // Get the three points and make sure they are what we think.
@@ -200,7 +196,7 @@ public class JsArrayTest extends GWTTestCase {
 
         // Make sure getting the '3' element throws an exception in Development Mode
         // (this won't happen in Production Mode).
-        if (!com.google.gwt.core.client.GWT.isScript()) {
+        if (!GWT.isScript()) {
             try {
                 jsArray.get(3);
                 fail("Expected an exception getting an invalid value in Development Mode");
@@ -216,9 +212,9 @@ public class JsArrayTest extends GWTTestCase {
 
         // Stick a non-numeric value in the '4' slot. Getting it should cause a type
         // error in Development Mode.
-        if (!com.google.gwt.core.client.GWT.isScript()) {
+        if (!GWT.isScript()) {
             try {
-                jsArray.<com.google.gwt.core.client.JsArrayString> cast().set(4, "bubba");
+                jsArray.<JsArrayString> cast().set(4, "bubba");
                 jsArray.get(4);
                 fail("Expected an exception getting an invalid value in Development Mode");
             } catch (Exception e) {
@@ -241,7 +237,7 @@ public class JsArrayTest extends GWTTestCase {
 
     public void testJsArrayString() {
         // All the test arrays start with 3 elements.
-        com.google.gwt.core.client.JsArrayString jsArray = makeJsArrayString();
+        JsArrayString jsArray = makeJsArrayString();
         assertEquals(3, jsArray.length());
 
         // Get the three points and make sure they are what we think.
@@ -269,7 +265,7 @@ public class JsArrayTest extends GWTTestCase {
         // error in Development Mode.
         if (!GWT.isScript()) {
             try {
-                jsArray.<com.google.gwt.core.client.JsArrayBoolean> cast().set(4, true);
+                jsArray.<JsArrayBoolean> cast().set(4, true);
                 jsArray.get(4);
                 fail("Expected an exception getting an invalid value in Development Mode");
             } catch (Exception e) {

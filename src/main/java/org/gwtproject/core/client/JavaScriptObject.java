@@ -42,7 +42,7 @@ public class JavaScriptObject {
      */
     @JsOverlay
     public static JavaScriptObject createArray(int size) {
-        return Js.cast(new JsArray<>(size));
+        return Js.cast(new JsArray<>((double)size));
     }
 
     /**
@@ -69,33 +69,4 @@ public class JavaScriptObject {
     public final <T> T cast() {
         return Js.uncheckedCast(this);
     }
-
-
-    @JsOverlay
-    @Override
-    public final boolean equals(Object obj) {
-        return hasEquals(this) ? callEquals(obj) : super.equals(obj);
-    }
-
-    @JsOverlay
-    private static boolean hasEquals(JavaScriptObject instance) {
-        return instance != null && instance.<JsPropertyMap<Any>>cast().has("equals");
-    }
-
-    @JsMethod(name = "equals")
-    private native boolean callEquals(Object obj);
-
-    @JsOverlay
-    @Override
-    public final int hashCode() {
-        return hasHashCode(this) ? callHashCode(this) : super.hashCode();
-    }
-
-    @JsOverlay
-    private static boolean hasHashCode(JavaScriptObject instance) {
-        return instance != null && instance.<JsPropertyMap<Any>>cast().has("hashCode");
-    }
-
-    @JsMethod(name = "hashCode")
-    private native int callHashCode(Object obj);
 }

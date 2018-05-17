@@ -12,7 +12,6 @@ public class CoreSuite {
         suite.addTestSuite(JavaScriptObjectTest.class);
         suite.addTestSuite(JsArrayTest.class);
         suite.addTestSuite(JsArrayMixedTest.class);
-        suite.addTestSuite(JsIdentityTest.class);
         suite.addTestSuite(SchedulerTest.class);
         suite.addTestSuite(SchedulerImplTest.class);
         suite.addTestSuite(ScriptInjectorTest.class);

@@ -81,7 +81,7 @@ public class SchedulerImplTest extends GWTTestCase {
 
     @Override
     public String getModuleName() {
-        return "org.gwtproject.core.Core";
+        return "org.gwtproject.core.CoreTest";
     }
 
     public void testDeferredCommands() {

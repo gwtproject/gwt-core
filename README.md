@@ -1,6 +1,6 @@
 # gwt-core
 
-This project is meant to roughly aproximate the various classes and methods found in gwt-user's `com.google.gwt.core`
+This project is meant to roughly approximate the various classes and methods found in gwt-user's `com.google.gwt.core`
 packages. In some cases, updated replacements are provided, in other cases working, but deprecated versions are offered,
 and further classes or members are outright skipped, encouraging projects to either find an alternative way to manage
 these operations before updating, or switch to a GWT3-version while performing the actual migration.
