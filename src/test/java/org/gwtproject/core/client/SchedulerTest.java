@@ -44,36 +44,36 @@ public class SchedulerTest extends GWTTestCase {
         delayTestFinish(TEST_DELAY);
     }
 
-    /**
-     * Tests that an entry command can schedule a finally command where the whole
-     * thing is kicked off by a deferred command.
-     */
-    public void testEndToEndLegacy() {
-        final boolean[] ranEntry = {false};
-
-        final ScheduledCommand finallyCommand = new ScheduledCommand() {
-            @Override
-            public void execute() {
-                assertTrue(ranEntry[0]);
-                finishTest();
-            }
-        };
-
-        Scheduler.get().scheduleEntry(new ScheduledCommand() {
-            @Override
-            public void execute() {
-                ranEntry[0] = true;
-                Scheduler.get().scheduleFinally(finallyCommand);
-            }
-        });
-
-        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-            @Override
-            public void execute() {
-                assertTrue(ranEntry[0]);
-            }
-        });
-
-        delayTestFinish(TEST_DELAY);
-    }
+//    /**
+//     * Tests that an entry command can schedule a finally command where the whole
+//     * thing is kicked off by a deferred command.
+//     */
+//    public void testEndToEndLegacy() {
+//        final boolean[] ranEntry = {false};
+//
+//        final ScheduledCommand finallyCommand = new ScheduledCommand() {
+//            @Override
+//            public void execute() {
+//                assertTrue(ranEntry[0]);
+//                finishTest();
+//            }
+//        };
+//
+//        Scheduler.get().scheduleEntry(new ScheduledCommand() {
+//            @Override
+//            public void execute() {
+//                ranEntry[0] = true;
+//                Scheduler.get().scheduleFinally(finallyCommand);
+//            }
+//        });
+//
+//        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+//            @Override
+//            public void execute() {
+//                assertTrue(ranEntry[0]);
+//            }
+//        });
+//
+//        delayTestFinish(TEST_DELAY);
+//    }
 }
