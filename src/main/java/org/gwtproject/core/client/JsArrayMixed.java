@@ -21,7 +21,8 @@ import jsinterop.base.Js;
  * }-* /;
  * </code>
  */
-@JsType(isNative = true, name = "Array", namespace = JsPackage.GLOBAL)
+@Deprecated
+@JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
 public class JsArrayMixed extends JavaScriptObject {
 
     protected JsArrayMixed() {

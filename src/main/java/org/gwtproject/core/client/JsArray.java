@@ -23,7 +23,8 @@ import jsinterop.annotations.JsType;
  *
  * @param <T> the concrete type of object contained in this array
  */
-@JsType(isNative = true, name = "Array", namespace = JsPackage.GLOBAL)
+@Deprecated
+@JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
 public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
 
     protected JsArray() {
