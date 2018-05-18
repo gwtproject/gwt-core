@@ -10,6 +10,7 @@ public class CoreSuite {
         GWTTestSuite suite = new GWTTestSuite("All core tests");
 
         suite.addTestSuite(JavaScriptObjectTest.class);
+        suite.addTestSuite(JsonUtilsTest.class);
         suite.addTestSuite(JsArrayTest.class);
         suite.addTestSuite(JsArrayMixedTest.class);
         suite.addTestSuite(SchedulerTest.class);

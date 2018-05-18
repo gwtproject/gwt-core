@@ -50,7 +50,8 @@ This project is not yet complete, there are doubtlessly better ways to handle so
    * JsArrayString - Updated, deprecated: projects should migrate when feasible to `elemental2.core.JsArray<JsString>`
    * JsArrayUtils - Updated, deprecated, consists only of calls to Js.uncheckedCast
    * JsDate -
-   * JsonUtils -
+   * JsonUtils - Updated, deprecated: projects should migrate to elemental2's JSON.parse and JSON.stringify, no method
+   in this class actually uses eval any longer
    * RunAsyncCallback - Skipped, split points
    * Scheduler - Updated, mising only scheduleEntry
    * ScriptInjector - Updated
