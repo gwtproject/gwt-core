@@ -42,7 +42,9 @@ public class ScriptInjector {
             assert wnd != null;
             Document doc = Js.<JsPropertyMap<Any>>uncheckedCast(wnd).getAny("document").uncheckedCast();//window has no document property... TODO
             assert doc != null;
-            HTMLScriptElement scriptElement = (HTMLScriptElement) doc.createElement("script");
+
+            // skipping the cast here since Chrome has a different HTMLScriptElement in the ifram
+            HTMLScriptElement scriptElement = Js.uncheckedCast(doc.createElement("script"));
             assert scriptElement != null;
             scriptElement.text = scriptBody;
             doc.head.appendChild(scriptElement);
@@ -105,7 +107,9 @@ public class ScriptInjector {
             assert wnd != null;
             Document doc = Js.<JsPropertyMap<Any>>uncheckedCast(wnd).getAny("document").uncheckedCast();//window has no document property... TODO
             assert doc != null;
-            HTMLScriptElement scriptElement = (HTMLScriptElement) doc.createElement("script");
+
+            // skipping the cast here since Chrome has a different HTMLScriptElement in the ifram
+            HTMLScriptElement scriptElement = Js.uncheckedCast(doc.createElement("script"));
             assert scriptElement != null;
             if (callback != null || removeTag) {
                 attachListeners(scriptElement, callback, removeTag);
