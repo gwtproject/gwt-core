@@ -23,7 +23,7 @@ public class SchedulerImpl extends Scheduler {
      * Metadata bag for command objects. It's a JSO so that a lightweight JsArray
      * can be used instead of a Collections type.
      */
-    @JsType(isNative=true, name="Object", namespace = JsPackage.GLOBAL)
+    @JsType(isNative=true, name="Array", namespace = JsPackage.GLOBAL)
     static final class Task extends JsArray<Any> {
         @JsOverlay
         public static Task create(RepeatingCommand cmd) {
