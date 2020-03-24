@@ -2,6 +2,8 @@
   <inherits name="elemental2.core.Core" />
   <inherits name="elemental2.dom.Dom" />
   <inherits name="elemental2.promise.Promise" />
+
+  <inherits name="jsinterop.base.Base"/>
   
   <!--<add-linker name="sso" />-->
 

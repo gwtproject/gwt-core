@@ -46,7 +46,6 @@
         <module>gwt-core</module>
         <module>gwt-core-gwt2-tests</module>
         <module>gwt-core-j2cl-tests</module>
-<!--        <module>gwt-core-junit-tests</module>-->
     </modules>
 
     <properties>
@@ -55,6 +54,15 @@
         <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
         <maven.fmt.plugin>2.5.1</maven.fmt.plugin>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.gwtproject.core</groupId>
+            <artifactId>gwt-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -70,16 +78,43 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven.deploy.plugin}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven.deploy.plugin}</version>
+                    <groupId>com.mycila</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>${maven.licence.plugin}</version>
                     <configuration>
-                        <skip>true</skip>
+                        <header>LICENSE.header</header>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <skipExistingHeaders>true</skipExistingHeaders>
+                        <mapping>
+                            <java>SLASHSTAR_STYLE</java>
+                        </mapping>
+                        <includes>
+                            <include>sec/test/java</include>
+                        </includes>
+                        <properties>
+                            <year>${project.inceptionYear}</year>
+                            <name>${project.organization.name}</name>
+                        </properties>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>

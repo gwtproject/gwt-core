@@ -18,14 +18,21 @@ package org.gwtproject.core.client;
 import static org.junit.Assert.assertEquals;
 
 import com.google.j2cl.junit.apt.J2clTestInput;
+import elemental2.core.Global;
+import jsinterop.base.Js;
 import org.junit.Test;
 
-@J2clTestInput(JavaScriptObjectTest.class)
-public class JavaScriptObjectTest {
+@J2clTestInput(JsonUtilsTest.class)
+public class JsonUtilsTest {
 
   @Test
-  public void testJsArray() {
-    JsArrayString array = JavaScriptObject.createArray(20).cast();
-    assertEquals(20, array.length());
+  public void testStringify() {
+    assertEquals("{\"a\":2}", JsonUtils.stringify(createJson()));
+    assertEquals("{\n\t\"a\": 2\n}", JsonUtils.stringify(createJson(), "\t"));
+    assertEquals("{\nXYZ\"a\": 2\n}", JsonUtils.stringify(createJson(), "XYZ"));
+  }
+
+  private JavaScriptObject createJson() {
+    return Js.cast(Global.JSON.parse("{ \"a\": 2 }"));
   }
 }

@@ -15,8 +15,6 @@
  */
 package org.gwtproject.core.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /** Tests {@link com.google.gwt.core.client.JsonUtils}. */
@@ -30,11 +28,9 @@ public class JsonUtilsTest extends GWTTestCase {
     if (isFirefox40OrEarlier()) {
       return;
     }
-    assertEquals("{\"a\":2}", com.google.gwt.core.client.JsonUtils.stringify(createJson()));
-    assertEquals(
-        "{\n\t\"a\": 2\n}", com.google.gwt.core.client.JsonUtils.stringify(createJson(), "\t"));
-    assertEquals(
-        "{\nXYZ\"a\": 2\n}", JsonUtils.stringify(createJson(), "XYZ"));
+    assertEquals("{\"a\":2}", JsonUtils.stringify(createJson()));
+    assertEquals("{\n\t\"a\": 2\n}", JsonUtils.stringify(createJson(), "\t"));
+    assertEquals("{\nXYZ\"a\": 2\n}", JsonUtils.stringify(createJson(), "XYZ"));
   }
 
   private native JavaScriptObject createJson() /*-{

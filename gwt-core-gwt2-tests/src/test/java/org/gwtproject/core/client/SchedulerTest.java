@@ -34,23 +34,25 @@ public class SchedulerTest extends GWTTestCase {
   public void testEndToEnd() {
     final boolean[] ranEntry = {false};
 
-    final ScheduledCommand finallyCommand = () -> {
-      assertTrue(ranEntry[0]);
-      Scheduler.get()
-          .scheduleFinally(
-              new ScheduledCommand() {
-                @Override
-                public void execute() {
-                  finishTest();
-                }
-              });
-    };
+    final ScheduledCommand finallyCommand =
+        () -> {
+          assertTrue(ranEntry[0]);
+          Scheduler.get()
+              .scheduleFinally(
+                  new ScheduledCommand() {
+                    @Override
+                    public void execute() {
+                      finishTest();
+                    }
+                  });
+        };
 
     Scheduler.get()
-        .scheduleDeferred(() -> {
-          ranEntry[0] = true;
-          Scheduler.get().scheduleFinally(finallyCommand);
-        });
+        .scheduleDeferred(
+            () -> {
+              ranEntry[0] = true;
+              Scheduler.get().scheduleFinally(finallyCommand);
+            });
 
     delayTestFinish(TEST_DELAY);
   }

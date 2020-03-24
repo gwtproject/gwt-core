@@ -1,4 +1,6 @@
-# gwt-core
+![GWT3/J2CL compatible](https://img.shields.io/badge/GWT3/J2CL-compatible-brightgreen.svg)
+
+# GWT Core
 
 This project is meant to roughly approximate the various classes and methods found in gwt-user's `com.google.gwt.core`
 packages. In some cases, updated replacements are provided, in other cases working, but deprecated versions are offered,
@@ -67,3 +69,27 @@ improvements are made.
 
 ### Updating JavaScriptObject subclasses
 TODO
+
+
+### Dependency
+
+```xml
+<dependency>
+    <groupId>org.gwtproject.core</groupId>
+    <artifactId>gwt-core</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+### Instructions
+To build gwt-core:
+
+* run `mvn clean install`
+
+on the parent directory.
+
+To run the j2cl tests:
+
+* switch to the 'gwt-core-j2cl-tests' directory
+* run `mvn j2cl:clean` & `mvn j2cl:test`
+

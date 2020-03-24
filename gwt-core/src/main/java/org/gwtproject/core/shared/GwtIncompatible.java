@@ -34,20 +34,21 @@ import java.lang.annotation.Target;
  *
  * <p>{@code class A {
  *
- * <p>int field; @GwtIncompatible("incompatible class") class Inner { ....
- * } @GwtIncompatible("incompatible field") int field2 = methodThatisNotSupportedbyGwt();
+ * <p><p><p><p><p><p><p><p><p><p><p>int field; @GwtIncompatible("incompatible class") class Inner {
+ * .... } @GwtIncompatible("incompatible field") int field2 = methodThatisNotSupportedbyGwt();
  *
- * <p>void method1() { } @GwtIncompatible("incompatbile method") void method2() {} } }
+ * <p><p><p><p><p><p><p><p><p><p><p>void method1() { } @GwtIncompatible("incompatbile method") void
+ * method2() {} } }
  *
  * <p>is seen by the Gwt compiler as
  *
  * <p>{@code class A {
  *
- * <p>int field;
+ * <p><p><p><p><p><p><p><p><p><p><p>int field;
  *
- * <p>void method1() { }
+ * <p><p><p><p><p><p><p><p><p><p><p>void method1() { }
  *
- * <p>} }
+ * <p><p><p><p><p><p><p><p><p><p><p>} }
  *
  * <p>Warning: this may have surprising effects when combined with method overloading or
  * inheritance.

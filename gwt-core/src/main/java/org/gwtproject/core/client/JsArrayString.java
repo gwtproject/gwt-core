@@ -16,7 +16,6 @@
 package org.gwtproject.core.client;
 
 import elemental2.core.JsArray;
-import elemental2.core.JsString;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
@@ -46,8 +45,8 @@ public class JsArrayString extends JavaScriptObject {
    */
   @JsOverlay
   public final String get(int index) {
-    JsString value = this.<JsArray<JsString>>cast().getAt(index);
-    return value == null ? null : value.toString_();
+    String value = this.<JsArray<String>>cast().getAt(index);
+    return value == null ? null : value;
   }
 
   /**
@@ -57,7 +56,7 @@ public class JsArrayString extends JavaScriptObject {
    */
   @JsOverlay
   public final String join() {
-    return this.<JsArray<JsString>>cast().join();
+    return this.<JsArray<String>>cast().join();
   }
 
   /**
@@ -67,7 +66,7 @@ public class JsArrayString extends JavaScriptObject {
    */
   @JsOverlay
   public final String join(String separator) {
-    return this.<JsArray<JsString>>cast().join(separator);
+    return this.<JsArray<String>>cast().join(separator);
   }
 
   /**
@@ -77,7 +76,7 @@ public class JsArrayString extends JavaScriptObject {
    */
   @JsOverlay
   public final int length() {
-    return this.<JsArray<JsString>>cast().length;
+    return this.<JsArray<String>>cast().length;
   }
 
   /** Pushes the given value onto the end of the array. */
@@ -94,7 +93,7 @@ public class JsArrayString extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, String value) {
-    this.<JsArray<JsString>>cast().setAt(index, Js.uncheckedCast(value));
+    this.<JsArray<String>>cast().setAt(index, Js.uncheckedCast(value));
   }
 
   /**
@@ -104,7 +103,7 @@ public class JsArrayString extends JavaScriptObject {
    */
   @JsOverlay
   public final void setLength(int newLength) {
-    this.<JsArray<JsString>>cast().length = newLength;
+    this.<JsArray<String>>cast().length = newLength;
   }
 
   /**

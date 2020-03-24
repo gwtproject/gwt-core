@@ -15,6 +15,7 @@
  */
 package org.gwtproject.core.client;
 
+import elemental2.core.JsArray;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
@@ -48,7 +49,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final int get(int index) {
-    return (int) (double) this.<elemental2.core.JsArray<Double>>cast().getAt(index);
+    return (int) (double) this.<JsArray<Double>>cast().getAt(index);
   }
 
   /**
@@ -58,7 +59,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final String join() {
-    return this.<elemental2.core.JsArray<Double>>cast().join();
+    return this.<JsArray<Double>>cast().join();
   }
 
   /**
@@ -68,7 +69,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final String join(String separator) {
-    return this.<elemental2.core.JsArray<Double>>cast().join(separator);
+    return this.<JsArray<Double>>cast().join(separator);
   }
 
   /**
@@ -78,7 +79,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final int length() {
-    return this.<elemental2.core.JsArray<Double>>cast().length;
+    return this.<JsArray<Double>>cast().length;
   }
 
   /** Pushes the given integer onto the end of the array. */
@@ -95,7 +96,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, int value) {
-    this.<elemental2.core.JsArray<Double>>cast().setAt(index, (double) value);
+    this.<JsArray<Double>>cast().setAt(index, (double) value);
   }
 
   /**
@@ -105,7 +106,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final void setLength(int newLength) {
-    this.<elemental2.core.JsArray<Double>>cast().length = newLength;
+    this.<JsArray<Double>>cast().length = newLength;
   }
 
   /**
@@ -115,7 +116,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final int shift() {
-    return (int) (double) this.<elemental2.core.JsArray<Double>>cast().shift();
+    return (int) (double) this.<JsArray<Double>>cast().shift();
   }
 
   /**

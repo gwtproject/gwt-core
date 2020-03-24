@@ -21,6 +21,7 @@ import jsinterop.base.Js;
  * Utility class for manipulating JS arrays. These methods are not on other JavaScriptObject
  * subclasses, such as JsArray, because adding new methods might break existing subtypes.
  */
+@Deprecated
 public class JsArrayUtils {
 
   /**
