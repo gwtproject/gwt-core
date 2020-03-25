@@ -101,8 +101,8 @@
                 <version>${maven.j2cl.plugin}</version>
                 <configuration>
 <!-- TODO: as long as ADVANCED compilationLevel will remove Assertions, we stay with BUNDLE -->
-<!--          <compilationLevel>ADVANCED</compilationLevel>-->
-                    <compilationLevel>BUNDLE</compilationLevel>
+                    <compilationLevel>ADVANCED</compilationLevel>
+<!--                <compilationLevel>BUNDLE</compilationLevel>-->
                 </configuration>
                 <executions>
                     <execution>
