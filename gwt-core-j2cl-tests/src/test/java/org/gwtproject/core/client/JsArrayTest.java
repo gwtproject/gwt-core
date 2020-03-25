@@ -18,7 +18,7 @@ package org.gwtproject.core.client;
 import static org.junit.Assert.*;
 
 import com.google.j2cl.junit.apt.J2clTestInput;
-import elemental2.dom.DomGlobal;
+import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -29,6 +29,13 @@ import org.junit.Test;
 /** Tests JsArray variants. */
 @J2clTestInput(JsArrayTest.class)
 public class JsArrayTest {
+
+  @FunctionalInterface
+  @JsFunction
+  public interface ToString {
+
+    public String getString();
+  }
 
   @JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
   private static class JsPoint extends JavaScriptObject {
@@ -52,30 +59,29 @@ public class JsArrayTest {
     JsPoint p1 = jsArray.get(1);
     JsPoint p2 = jsArray.get(2);
 
-//    ("Hoss-Output:" + jsArray.join());
-//    assertEquals("JsPoint,JsPoint,JsPoint", jsArray.join());
-//    assertEquals("JsPoint,JsPoint,JsPoint", jsArray.join());
-//    assertEquals("JsPoint:JsPoint:JsPoint", jsArray.join(":"));
-//
-//    assertEquals(0, p0.x());
-//    assertEquals(1, p0.y());
-//    assertEquals(2, p1.x());
-//    assertEquals(3, p1.y());
-//    assertEquals(4, p2.x());
-//    assertEquals(5, p2.y());
-//
-//    // Make sure the '3' element is null.
-//    assertNull(jsArray.get(3));
-//
-//    // Make a new point and stick it in the '3' slot. It should come back with
-//    // reference equality intact, and the array length should be bumped to 4.
-//    JsPoint p3 = makeJsPoint(6, 7);
-//    jsArray.set(3, p3);
-//    assertEquals(p3, jsArray.get(3));
-//    assertEquals(4, jsArray.length());
-//
-//    jsArray.setLength(0);
-//    assertEquals(0, jsArray.length());
+    assertEquals("JsPoint,JsPoint,JsPoint", jsArray.join());
+    assertEquals("JsPoint,JsPoint,JsPoint", jsArray.join());
+    assertEquals("JsPoint:JsPoint:JsPoint", jsArray.join(":"));
+
+    assertEquals(0, p0.x());
+    assertEquals(1, p0.y());
+    assertEquals(2, p1.x());
+    assertEquals(3, p1.y());
+    assertEquals(4, p2.x());
+    assertEquals(5, p2.y());
+
+    // Make sure the '3' element is null.
+    assertNull(jsArray.get(3));
+
+    // Make a new point and stick it in the '3' slot. It should come back with
+    // reference equality intact, and the array length should be bumped to 4.
+    JsPoint p3 = makeJsPoint(6, 7);
+    jsArray.set(3, p3);
+    assertEquals(p3, jsArray.get(3));
+    assertEquals(4, jsArray.length());
+
+    jsArray.setLength(0);
+    assertEquals(0, jsArray.length());
   }
 
   @Test
@@ -114,41 +120,41 @@ public class JsArrayTest {
     assertEquals(0, jsArray.length());
   }
 
-//  @Test
-//  public void testJsArrayInteger() {
-//    // All the test arrays start with 3 elements.
-//    JsArrayInteger jsArray = makeJsArrayInteger();
-//    assertEquals(3, jsArray.length());
-//
-//    // Get the three points and make sure they are what we think.
-//    assertEquals(0, jsArray.get(0));
-//    assertEquals(1, jsArray.get(1));
-//    assertEquals(2, jsArray.get(2));
-//
-//    assertEquals("0,1,2", jsArray.join());
-//    assertEquals("0:1:2", jsArray.join(":"));
-//
-//    // Stick a new number in the '3' slot. It should come back intact, and the
-//    // array length should be bumped to 4.
-//    jsArray.set(3, 3);
-//    assertEquals(3, jsArray.get(3));
-//    assertEquals(4, jsArray.length());
-//
-//    // Stick a non-numeric value in the '4' slot. Getting it should cause a type
-//    // error in Development Mode.
-//    // Keep the length of the array sane for the remainer of the test
-//    jsArray.set(4, 33);
-//
-//    // Add an element to the beginning of the array
-//    jsArray.unshift(42);
-//    assertEquals(6, jsArray.length());
-//    assertEquals(42, jsArray.get(0));
-//    assertEquals(42, jsArray.shift());
-//    assertEquals(5, jsArray.length());
-//
-//    jsArray.setLength(0);
-//    assertEquals(0, jsArray.length());
-//  }
+  @Test
+  public void testJsArrayInteger() {
+    // All the test arrays start with 3 elements.
+    JsArrayInteger jsArray = makeJsArrayInteger();
+    assertEquals(3, jsArray.length());
+
+    // Get the three points and make sure they are what we think.
+    assertEquals(0, jsArray.get(0));
+    assertEquals(1, jsArray.get(1));
+    assertEquals(2, jsArray.get(2));
+
+    assertEquals("0,1,2", jsArray.join());
+    assertEquals("0:1:2", jsArray.join(":"));
+
+    // Stick a new number in the '3' slot. It should come back intact, and the
+    // array length should be bumped to 4.
+    jsArray.set(3, 3);
+    assertEquals(3, jsArray.get(3));
+    assertEquals(4, jsArray.length());
+
+    // Stick a non-numeric value in the '4' slot. Getting it should cause a type
+    // error in Development Mode.
+    // Keep the length of the array sane for the remainer of the test
+    jsArray.set(4, 33);
+
+    // Add an element to the beginning of the array
+    jsArray.unshift(42);
+    assertEquals(6, jsArray.length());
+    assertEquals(42, jsArray.get(0));
+    assertEquals(42, jsArray.shift());
+    assertEquals(5, jsArray.length());
+
+    jsArray.setLength(0);
+    assertEquals(0, jsArray.length());
+  }
 
   @Test
   public void testJsArrayNumber() {
@@ -226,23 +232,9 @@ public class JsArrayTest {
     assertEquals(0, jsArray.length());
   }
 
-  //  private native JsArray<JsPoint> makeJsArray() /*-{
-  //      return [
-  //        { x: 0, y: 1, toString: function() { return 'JsPoint';} },
-  //        { x: 2, y: 3, toString: function() { return 'JsPoint';} },
-  //        { x: 4, y: 5, toString: function() { return 'JsPoint';} },
-  //      ];
-  //    }-*/;
-
   private JsArray<JsPoint> makeJsArray() {
     return Js.cast(
-        elemental2.core.JsArray.of(
-            Js.cast(
-                JsPropertyMap.of("x", 0, "y", 1, "toString", "function() { return 'JsPoint';}")),
-            Js.cast(
-                JsPropertyMap.of("x", 2, "y", 3, "toString", "function() { return 'JsPoint';}")),
-            Js.cast(
-                JsPropertyMap.of("x", 4, "y", 5, "toString", "function() { return 'JsPoint';}"))));
+        elemental2.core.JsArray.of(makeJsPoint(0, 1), makeJsPoint(2, 3), makeJsPoint(4, 5)));
   }
 
   private JsArrayBoolean makeJsArrayBoolean() {
@@ -250,7 +242,7 @@ public class JsArrayTest {
   }
 
   private JsArrayInteger makeJsArrayInteger() {
-    return Js.cast(elemental2.core.JsArray.of(0, 1, 2));
+    return Js.cast(elemental2.core.JsArray.of(0.d, 1.d, 2.d));
   }
 
   private JsArrayNumber makeJsArrayNumber() {
@@ -262,6 +254,19 @@ public class JsArrayTest {
   }
 
   private JsPoint makeJsPoint(int newx, int newy) {
-    return Js.cast(JsPropertyMap.of("x", newx, "y", newy));
+    return Js.cast(
+        JsPropertyMap.of(
+            "x",
+            newx,
+            "y",
+            newy,
+            "toString",
+            new ToString() {
+
+              @Override
+              public String getString() {
+                return "JsPoint";
+              }
+            }));
   }
 }
