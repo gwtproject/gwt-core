@@ -28,29 +28,31 @@ public class SchedulerTest {
   @Test
   public void testEndToEnd() {
 
-      final boolean[] ranDeferred = {false};
-      final boolean[] ranFinally = {false};
+    final boolean[] ranDeferred = {false};
+    final boolean[] ranFinally = {false};
 
-      final ScheduledCommand finallyCommand = () -> {
-
+    final ScheduledCommand finallyCommand =
+        () -> {
           assertTrue(ranDeferred[0]);
           assertFalse(ranFinally[0]);
           ranFinally[0] = true;
 
-          Scheduler.get().scheduleFinally(new ScheduledCommand() {
+          Scheduler.get()
+              .scheduleFinally(
+                  new ScheduledCommand() {
 
-              @Override
-              public void execute() {
-                  assertTrue(ranFinally[0]);
-              }
-          });
+                    @Override
+                    public void execute() {
+                      assertTrue(ranFinally[0]);
+                    }
+                  });
+        };
 
-      };
-
-      Scheduler.get().scheduleDeferred(() -> {
-          ranDeferred[0] = true;
-          Scheduler.get().scheduleFinally(finallyCommand);
-      });
+    Scheduler.get()
+        .scheduleDeferred(
+            () -> {
+              ranDeferred[0] = true;
+              Scheduler.get().scheduleFinally(finallyCommand);
+            });
   }
-
 }

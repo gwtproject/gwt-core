@@ -261,12 +261,6 @@ public class JsArrayTest {
             "y",
             newy,
             "toString",
-            new ToString() {
-
-              @Override
-              public String getString() {
-                return "JsPoint";
-              }
-            }));
+            (org.gwtproject.core.client.JsArrayTest.ToString) () -> "JsPoint"));
   }
 }
