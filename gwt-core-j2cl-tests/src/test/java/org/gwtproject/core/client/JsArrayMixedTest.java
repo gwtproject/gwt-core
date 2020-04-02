@@ -226,85 +226,63 @@ public class JsArrayMixedTest {
     assertEquals("kiwi", mixedArray.getString(0));
   }
 
-  //  @Test
-  //  public void testEdgeCases() {
-  //    JsArrayMixed weirdArray = makeEdgeCaseArray();
-  //
-  //    DomGlobal.console.log("0 -> " + weirdArray.getBoolean(0));
-  //    DomGlobal.console.log("1 -> " + weirdArray.getBoolean(1));
-  //    DomGlobal.console.log("2 -> " + weirdArray.getBoolean(2));
-  //    DomGlobal.console.log("3 -> " + weirdArray.getBoolean(3));
-  //    DomGlobal.console.log("4 -> " + weirdArray.getBoolean(4));
-  //    DomGlobal.console.log("5 -> " + weirdArray.getBoolean(5));
-  //    DomGlobal.console.log("6 -> " + weirdArray.getBoolean(6));
-  //    DomGlobal.console.log("7 -> " + weirdArray.getBoolean(7));
-  //    DomGlobal.console.log("8 -> " + weirdArray.getBoolean(8));
-  //    DomGlobal.console.log("9 -> " + weirdArray.getBoolean(9));
-  //    DomGlobal.console.log("10 -> " + weirdArray.getBoolean(10));
-  //
-  //    // boolean values
-  //    assertFalse(weirdArray.getBoolean(0));
-  //    assertTrue(weirdArray.getBoolean(1));
-  //    assertTrue(weirdArray.getBoolean(2));
-  //    assertTrue(weirdArray.getBoolean(3));
-  //    assertFalse(weirdArray.getBoolean(4));
-  //    assertTrue(weirdArray.getBoolean(5));
-  //    assertFalse(weirdArray.getBoolean(6));
-  //    assertTrue(weirdArray.getBoolean(7));
-  //    assertTrue(weirdArray.getBoolean(8));
-  //    assertTrue(weirdArray.getBoolean(9));
-  //    assertTrue(weirdArray.getBoolean(10));
-  //
-  //    DomGlobal.console.log("0 -> " + weirdArray.getNumber(0));
-  //    DomGlobal.console.log("1 -> " + weirdArray.getNumber(1));
-  //    DomGlobal.console.log("2 -> " + weirdArray.getNumber(2));
-  //    DomGlobal.console.log("3 -> " + weirdArray.getNumber(3));
-  //    DomGlobal.console.log("4 -> " + weirdArray.getNumber(4));
-  //    DomGlobal.console.log("5 -> " + weirdArray.getNumber(5));
-  //    DomGlobal.console.log("6 -> " + weirdArray.getNumber(6));
-  //    DomGlobal.console.log("7 -> " + weirdArray.getNumber(7));
-  //    DomGlobal.console.log("8 -> " + weirdArray.getNumber(8));
-  //    DomGlobal.console.log("9 -> " + weirdArray.getNumber(9));
-  //    DomGlobal.console.log("10 -> " + weirdArray.getNumber(10));
-  //
-  //    // number values
-  //    assertEquals(0.0, weirdArray.getNumber(0), 0);
-  //    assertEquals(0.0, weirdArray.getNumber(1), 0);
-  //    assertEquals(1.0, weirdArray.getNumber(2), 0);
-  //    assertTrue(Double.isNaN(weirdArray.getNumber(3)));
-  //    assertEquals(0.0, weirdArray.getNumber(4), 0);
-  //    assertEquals(1.0, weirdArray.getNumber(5), 0);
-  //    assertTrue(Double.isNaN(weirdArray.getNumber(6)));
-  //    assertEquals(Double.POSITIVE_INFINITY, weirdArray.getNumber(7), 0);
-  //    assertEquals(0.0, weirdArray.getNumber(8), 0);
-  //    assertEquals(0.0, weirdArray.getNumber(9), 0);
-  //    assertEquals(1.0, weirdArray.getNumber(10), 0);
-  //
-  //
-  //    DomGlobal.console.log("0 -> " + weirdArray.getString(0));
-  //    DomGlobal.console.log("1 -> " + weirdArray.getString(1));
-  //    DomGlobal.console.log("2 -> " + weirdArray.getString(2));
-  //    DomGlobal.console.log("3 -> " + weirdArray.getString(3));
-  //    DomGlobal.console.log("4 -> " + weirdArray.getString(4));
-  //    DomGlobal.console.log("5 -> " + weirdArray.getString(5));
-  //    DomGlobal.console.log("6 -> " + weirdArray.getString(6));
-  //    DomGlobal.console.log("7 -> " + weirdArray.getString(7));
-  //    DomGlobal.console.log("8 -> " + weirdArray.getString(8));
-  //    DomGlobal.console.log("9 -> " + weirdArray.getString(9));
-  //    DomGlobal.console.log("10 -> " + weirdArray.getString(10));
-  //    // String values
-  //    assertEquals("", weirdArray.getString(0));
-  //    assertEquals("0", weirdArray.getString(1));
-  //    assertEquals("1", weirdArray.getString(2));
-  //    assertEquals("NaN", weirdArray.getString(3));
-  //    assertEquals("0", weirdArray.getString(4));
-  //    assertEquals("1", weirdArray.getString(5));
-  //    assertEquals("NaN", weirdArray.getString(6));
-  //    assertEquals("Infinity", weirdArray.getString(7));
-  //    assertEquals("", weirdArray.getString(8));
-  //    assertEquals("0", weirdArray.getString(9));
-  //    assertEquals("1", weirdArray.getString(10));
-  //  }
+  @Test
+  public void testEdgeCases() {
+    JsArrayMixed weirdArray = makeEdgeCaseArray();
+
+    // boolean values
+    assertFalse(weirdArray.getBoolean(0));
+    assertTrue(weirdArray.getBoolean(1));
+    assertTrue(weirdArray.getBoolean(2));
+    assertTrue(weirdArray.getBoolean(3));
+    assertFalse(weirdArray.getBoolean(4));
+    assertTrue(weirdArray.getBoolean(5));
+    assertFalse(weirdArray.getBoolean(6));
+    assertTrue(weirdArray.getBoolean(7));
+    assertTrue(weirdArray.getBoolean(8));
+    assertTrue(weirdArray.getBoolean(9));
+    assertTrue(weirdArray.getBoolean(10));
+
+    // number values
+    assertEquals(0.0, weirdArray.getNumber(0), 0);
+    assertEquals(0.0, weirdArray.getNumber(1), 0);
+    assertEquals(1.0, weirdArray.getNumber(2), 0);
+    assertTrue(Double.isNaN(weirdArray.getNumber(3)));
+    assertEquals(0.0, weirdArray.getNumber(4), 0);
+    assertEquals(1.0, weirdArray.getNumber(5), 0);
+    assertTrue(Double.isNaN(weirdArray.getNumber(6)));
+    assertEquals(Double.POSITIVE_INFINITY, weirdArray.getNumber(7), 0);
+    assertEquals(0.0, weirdArray.getNumber(8), 0);
+    assertEquals(0.0, weirdArray.getNumber(9), 0);
+    assertEquals(1.0, weirdArray.getNumber(10), 0);
+
+    // TODO: arrary.toString() will return Object.toString() instead of a normal
+    //       String as expeced in JS. J2CL handels it in a different way, than
+    //       GWT does. Atm we will not fix this behavior.
+    //      DomGlobal.console.log("0 -> " + weirdArray.getString(0));
+    //      DomGlobal.console.log("1 -> " + weirdArray.getString(1));
+    //      DomGlobal.console.log("2 -> " + weirdArray.getString(2));
+    //      DomGlobal.console.log("3 -> " + weirdArray.getString(3));
+    //      DomGlobal.console.log("4 -> " + weirdArray.getString(4));
+    //      DomGlobal.console.log("5 -> " + weirdArray.getString(5));
+    //      DomGlobal.console.log("6 -> " + weirdArray.getString(6));
+    //      DomGlobal.console.log("7 -> " + weirdArray.getString(7));
+    //      DomGlobal.console.log("8 -> " + weirdArray.getString(8));
+    //      DomGlobal.console.log("9 -> " + weirdArray.getString(9));
+    //      DomGlobal.console.log("10 -> " + weirdArray.getString(10));
+    //      // String values
+    //      assertEquals("", weirdArray.getString(0));
+    //      assertEquals("0", weirdArray.getString(1));
+    //      assertEquals("1", weirdArray.getString(2));
+    //      assertEquals("NaN", weirdArray.getString(3));
+    //      assertEquals("0", weirdArray.getString(4));
+    //      assertEquals("1", weirdArray.getString(5));
+    //      assertEquals("NaN", weirdArray.getString(6));
+    //      assertEquals("Infinity", weirdArray.getString(7));
+    //      assertEquals("", weirdArray.getString(8));
+    //      assertEquals("0", weirdArray.getString(9));
+    //      assertEquals("1", weirdArray.getString(10));
+  }
 
   private boolean compareObjects(JavaScriptObject expected, JavaScriptObject actual) {
     final boolean[] equals = {true};
