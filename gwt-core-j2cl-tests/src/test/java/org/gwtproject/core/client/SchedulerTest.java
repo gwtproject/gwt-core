@@ -19,40 +19,47 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import com.google.j2cl.junit.apt.J2clTestInput;
+import elemental2.promise.Promise;
 import org.gwtproject.core.client.Scheduler.ScheduledCommand;
 import org.junit.Test;
 
 @J2clTestInput(SchedulerTest.class)
 public class SchedulerTest {
 
-  @Test
-  public void testEndToEnd() {
+  private static final int TEST_DELAY = 10000;
 
-    final boolean[] ranDeferred = {false};
-    final boolean[] ranFinally = {false};
+  @Test(timeout = TEST_DELAY)
+  public Promise<Void> testEndToEnd() {
 
-    final ScheduledCommand finallyCommand =
-        () -> {
-          assertTrue(ranDeferred[0]);
-          assertFalse(ranFinally[0]);
-          ranFinally[0] = true;
+    return new Promise<Void>(
+        (resolve, reject) -> {
+          final boolean[] ranDeferred = {false};
+          final boolean[] ranFinally = {false};
+
+          final ScheduledCommand finallyCommand =
+              () -> {
+                assertTrue(ranDeferred[0]);
+                assertFalse(ranFinally[0]);
+                ranFinally[0] = true;
+
+                Scheduler.get()
+                    .scheduleFinally(
+                        new ScheduledCommand() {
+
+                          @Override
+                          public void execute() {
+                            assertTrue(ranFinally[0]);
+                            resolve.onInvoke((Void) null);
+                          }
+                        });
+              };
 
           Scheduler.get()
-              .scheduleFinally(
-                  new ScheduledCommand() {
-
-                    @Override
-                    public void execute() {
-                      assertTrue(ranFinally[0]);
-                    }
+              .scheduleDeferred(
+                  () -> {
+                    ranDeferred[0] = true;
+                    Scheduler.get().scheduleFinally(finallyCommand);
                   });
-        };
-
-    Scheduler.get()
-        .scheduleDeferred(
-            () -> {
-              ranDeferred[0] = true;
-              Scheduler.get().scheduleFinally(finallyCommand);
-            });
+        });
   }
 }
