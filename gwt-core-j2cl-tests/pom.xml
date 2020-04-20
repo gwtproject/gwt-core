@@ -92,6 +92,30 @@
     <build>
         <plugins>
             <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <!-- Copy static test resources to web test folder. -->
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}-test/${project.artifactId}/</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>src/test/resources/org/gwtproject/core/public</directory>
+                                        <filtering>false</filtering>
+                                    </resource>
+                                </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
             </plugin>
