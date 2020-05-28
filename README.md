@@ -22,7 +22,7 @@ This project is not yet complete, there are doubtlessly better ways to handle so
      * JavaScriptExceptionBase - Skipped, exceptions are handled differently in GWT3, legacy dev mode is not a concern
      * LoadingStrategyBase - Skipped, split points
      * OnSuccessExecutor - Skipped, package-protected and used in split points
-     * SchedulerImpl - Updated, missing only scheduleEntry
+     * SchedulerImpl - Updated, missing scheduleEntry
      * ScriptTagLoadingStrategy - Skipped, split points
      * StackTraceCreator - Skipped, browsers are less crappy now
      * SuperDevModeLogger - Skipped, GWT.log either will not exist, or will only be implemented in this way anyway
@@ -36,9 +36,12 @@ This project is not yet complete, there are doubtlessly better ways to handle so
    * Callback - Included, simple interface that eventually probably should be moved anyway
    * CodeDownloadExecution - Skipped, split points
    * Duration - Included for now, only as a util class for Scheduler
-   * EntryPoint - Included, applications will likely still use this as a way to start up
+   * EntryPoint - Removed - GWT2 applications must continue to use `com.google.gwt.core.client.EntryPoint`, whereas 
+   while J2CL applications have much more flexibility, they will probably use a different pattern.
    * GWT - Partially included for now to ease migration. This likely belongs in the "third" category, code which largely
-   will not exist in GWT 3, so should be removed now, but this is used so extensively that would be difficult.
+   will not exist in GWT 3, so should be removed now, but this is used so extensively that would be difficult. Methods
+   which can be supported are included, with others removed. Deprecated methods are either broken or should be phased
+   out.
    * JavaScriptException - Skipped for now, unsure we can replace in a way that will still behave the same as before
    * JavaScriptObject - Included, deprecated: classes extending this will need additional updates to properly conform
    to JsInterop requirements
@@ -51,11 +54,11 @@ This project is not yet complete, there are doubtlessly better ways to handle so
    * JsArrayNumber - Updated, deprecated: projects should migrate when feasible to `elemental2.core.JsArray<Double>`
    * JsArrayString - Updated, deprecated: projects should migrate when feasible to `elemental2.core.JsArray<JsString>`
    * JsArrayUtils - Updated, deprecated, consists only of calls to Js.uncheckedCast
-   * JsDate -
+   * JsDate - Updated, deprecated: projects should migrate to `elemental2.core.JsDate`
    * JsonUtils - Updated, deprecated: projects should migrate to elemental2's JSON.parse and JSON.stringify, no method
    in this class actually uses eval any longer
    * RunAsyncCallback - Skipped, split points
-   * Scheduler - Updated, mising only scheduleEntry
+   * Scheduler - Updated, mising scheduleEntry
    * ScriptInjector - Updated
    * SingleJsoImpl - Skipped, JSO-related, shouldn't be needed
    * SingleJsoImplName - Skipped, JSO-related, shouldn't be needed
@@ -68,7 +71,20 @@ improvements are made.
 
 
 ### Updating JavaScriptObject subclasses
-TODO
+As with most of the deprecated classes kept in this library, existing JavaScriptObject types should be rewritten using 
+jsinterop annotations to correctly explain to the compiler what is happening. This class can still be convient to use
+as an argument or return type, but generally should not be extended in your own projects any longer.
+
+Some basic guidlines to follow:
+ * The type itself must be marked as `@JsType(isNative=true)`, most likely with `namespace=JsPackage.GLOBAL`, and 
+ depending on your use case, you might want to always use `name="Object"`, or might want to refer to a different JS
+ class.
+ * Existing native methods need to be rewritten either as overlay methods, or made native to describe how they call the
+ actual JS. A `@JsMethod(name=...)` may be required if the method name is not the same as in JS, or a `@JsProperty` if
+ the method exists to read/write a property. Fields can also be created - they will be assumed to be named for an
+ existing JS property, but you can likewise rename them with `@JsProperty`.
+ * Overlay methods need to be marked with `@JsOverlay`, and continue to need to be effectively final (i.e. never 
+ overridden), but no longer need to be marked as `final`.
 
 
 ### Dependency
@@ -86,10 +102,5 @@ To build gwt-core:
 
 * run `mvn clean install`
 
-on the parent directory.
-
-To run the j2cl tests:
-
-* switch to the 'gwt-core-j2cl-tests' directory
-* run `mvn j2cl:clean` & `mvn j2cl:test`
+on the parent directory. This will build the artifact and run tests against the JVM, J2CL, and GWT2.
 

@@ -20,21 +20,21 @@ import static org.junit.Assert.assertFalse;
 import org.junit.Test;
 
 public class GWTTest {
-    @Test
-    public void testIsScript() {
-        assertFalse(GWT.isScript());
-        assertFalse(org.gwtproject.core.shared.GWT.isScript());
-    }
+  @Test
+  public void testIsScript() {
+    assertFalse(GWT.isScript());
+    assertFalse(org.gwtproject.core.shared.GWT.isScript());
+  }
 
-    @Test
-    public void testIsClient() {
-        assertFalse(GWT.isClient());
-        assertFalse(org.gwtproject.core.shared.GWT.isClient());
-    }
+  @Test
+  public void testIsClient() {
+    assertFalse(GWT.isClient());
+    assertFalse(org.gwtproject.core.shared.GWT.isClient());
+  }
 
-    @Test
-    public void testIsProdMode() {
-        assertFalse(GWT.isProdMode());
-        assertFalse(org.gwtproject.core.shared.GWT.isProdMode());
-    }
+  @Test
+  public void testIsProdMode() {
+    assertFalse(GWT.isProdMode());
+    assertFalse(org.gwtproject.core.shared.GWT.isProdMode());
+  }
 }
