@@ -1,7 +1,10 @@
 package org.gwtproject.core.client;
 
 import elemental2.dom.DomGlobal;
+import elemental2.dom.Window;
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
 
 /**
  * Supports core functionality that in some cases requires direct support from
@@ -24,6 +27,9 @@ public final class GWT {
         void onUncaughtException(Throwable e);
     }
 
+    private static UncaughtExceptionHandler uncaughtExceptionHandler = null;
+    private static boolean onErrorInitialized;
+
     @Deprecated
     public static <T> T create(Class<?> clazz) {
         return org.gwtproject.core.shared.GWT.create(clazz);
@@ -42,6 +48,100 @@ public final class GWT {
                     throw_(e);
                 },
                 0);
+    }
+
+    /**
+     * Returns the currently active uncaughtExceptionHandler.
+     *
+     * @return the currently active handler, or null if no handler is active.
+     *
+     * @see #reportUncaughtException(Throwable)
+     */
+    public static UncaughtExceptionHandler getUncaughtExceptionHandler() {
+        return uncaughtExceptionHandler;
+    }
+
+    /**
+     * Sets a custom uncaught exception handler. See
+     * {@link #getUncaughtExceptionHandler()} for details.
+     *
+     * @param handler the handler that should be called when an exception is
+     *        about to escape to the browser, or <code>null</code> to clear the
+     *        handler and allow exceptions to escape.
+     */
+    public static void setUncaughtExceptionHandler(
+            UncaughtExceptionHandler handler) {
+        uncaughtExceptionHandler = handler;
+        if (handler == null) {
+            return;
+        }
+        if (onErrorInitialized) {
+            return;
+        }
+        onErrorInitialized = true;
+
+        // transliterated from gwt2's Impl.registerWindowOnError
+        Window.OnerrorFn errorHandler = (msg, url, line, column, error) -> {
+            if (uncaughtExceptionHandler == null) {
+                return null;
+            }
+            // IE8, IE9, IE10, safari 9, do not have an error passed. While
+            // we don't necessarily support these browsers, when chasing an
+            // error there is already enough frustration, so we'll still
+            // synthesize a new one
+
+            if (error == null) {
+                String errorString = msg + " (" + url + ":" + line;
+                // IE8 and IE9 do not have the column number
+                if (Js.asAny(column) == null) {
+                    errorString += ":" + column;
+                }
+                errorString += ")";
+                uncaughtExceptionHandler.onUncaughtException(fromObject(errorString));
+
+            } else {
+                uncaughtExceptionHandler.onUncaughtException(fromObject(error));
+            }
+
+            return null;
+        };
+
+        addOnErrorHandler(DomGlobal.window, errorHandler);
+        if (DomGlobal.window != InnerWindow.window) {
+            //if the local window is the same as the global one (SSO linker in gwt2, or default in j2cl) we skip this
+            addOnErrorHandler(InnerWindow.window, errorHandler);
+        }
+    }
+
+    /**
+     * Appends a new onerror handler so that both original and new are called, or just assigns
+     * the new one if there was no existing one.
+     */
+    private static void addOnErrorHandler(Window window, Window.OnerrorFn onerrorFn) {
+        Window.OnerrorFn original = window.onerror;
+        if (original == null) {
+            window.onerror = onerrorFn;
+        }
+        window.onerror = (p0, p1, p2, p3, p4) -> {
+            onerrorFn.onInvoke(p0, p1, p2, p3, p4);
+            original.onInvoke(p0, p1, p2, p3, p4);
+            return null;
+        };
+    }
+
+    /**
+     * Ugly hack to let j2cl and gwt both call the fake method Throwable.of, which only
+     * exists in our emul code, not in the proper JRE.
+     */
+    @JsMethod
+    private static native Throwable fromObject(Object obj) /*-{
+        //GWT2 impl using JSNI, see GWT.native.js for the j2cl impl
+        var throwable = @java.lang.Throwable::of(*)(obj);
+    }-*/;
+
+    @JsType(isNative = true, name = "window", namespace = "<window>")
+    private static class InnerWindow {
+        static Window window;
     }
 
     @JsMethod(namespace ="<window>", name = "throw")
