@@ -527,14 +527,14 @@ public class ScriptInjectorTest {
   };
 
   private Document getDocumentFromWindow(JavaScriptObject wnd) {
-    return Js.<JsPropertyMap<Any>>cast(wnd).getAny("document").cast();
+    return Js.<JsPropertyMap<Any>>cast(wnd).getAsAny("document").cast();
   }
 
   /** @return URL of test base path */
   private String getTestBasePath() {
 
     // TODO This is more a hack and should be improved!
-    final String href = DomGlobal.location.getHref();
+    final String href = DomGlobal.location.href;
     final String basePath = href.substring(0, href.lastIndexOf("/") + 1);
 
     return basePath;

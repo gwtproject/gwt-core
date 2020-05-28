@@ -52,7 +52,7 @@
         <maven.source.plugin>3.2.1</maven.source.plugin>
         <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
 
-        <elemental2.version>1.0.0-RC1</elemental2.version>
+        <elemental2.version>1.0.0</elemental2.version>
     </properties>
 
     <dependencies>

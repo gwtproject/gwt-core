@@ -52,7 +52,7 @@ public class ScriptInjector {
       assert wnd != null;
       Document doc =
           Js.<JsPropertyMap<Any>>uncheckedCast(wnd)
-              .getAny("document")
+              .getAsAny("document")
               .uncheckedCast(); // window has no document property... TODO
       assert doc != null;
 
@@ -116,7 +116,7 @@ public class ScriptInjector {
       assert wnd != null;
       Document doc =
           Js.<JsPropertyMap<Any>>uncheckedCast(wnd)
-              .getAny("document")
+              .getAsAny("document")
               .uncheckedCast(); // window has no document property... TODO
       assert doc != null;
 
@@ -237,7 +237,6 @@ public class ScriptInjector {
           if (removeTag) {
             scriptElement.parentNode.removeChild(scriptElement);
           }
-          return null;
         };
     // or possibly more portable script_tag.addEventListener('error', function(){...}, true);
     scriptElement.onerror =

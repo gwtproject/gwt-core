@@ -61,8 +61,6 @@
         <vertispan.j2cl.repo.url>https://repo.vertispan.com/j2cl/</vertispan.j2cl.repo.url>
         <google.snapshot.repo.url>https://oss.sonatype.org/content/repositories/google-snapshots/</google.snapshot.repo.url>
 
-<!--        <elemental2.version>1.0.0-RC1</elemental2.version>-->
-        <jsinterop.base.version>1.0.0-SNAPSHOT</jsinterop.base.version>
         <j2cl.version>0.7-SNAPSHOT</j2cl.version>
         <slf4j.version>1.7.5</slf4j.version>
     </properties>
@@ -130,6 +128,7 @@
                 <executions>
                     <execution>
                         <id>j2cl-test</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>test</goal>
                         </goals>
