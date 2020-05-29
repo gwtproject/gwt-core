@@ -48,13 +48,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <maven.compiler.plugin>3.7.0</maven.compiler.plugin>
-        <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
-        <maven.findbugs.plugin>3.0.5</maven.findbugs.plugin>
-        <maven.install.plugin>3.0.0-M1</maven.install.plugin>
-        <maven.jar.plugin>3.1.2</maven.jar.plugin>
         <maven.j2cl.plugin>0.13-SNAPSHOT</maven.j2cl.plugin>
-        <maven.licence.plugin>3.0</maven.licence.plugin>
+        <maven.resource.plugin>3.1.0</maven.resource.plugin>
         <maven.surfire.plugin>3.0.0-M1</maven.surfire.plugin>
 
         <!-- CI -->
@@ -91,7 +86,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${maven.resource.plugin}</version>
                 <executions>
                     <!-- Copy static test resources to web test folder. -->
                     <execution>

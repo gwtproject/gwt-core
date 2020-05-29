@@ -50,12 +50,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <maven.compiler.plugin>3.7.0</maven.compiler.plugin>
-        <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
         <maven.gwt.plugin>1.0.0</maven.gwt.plugin>
-        <maven.install.plugin>3.0.0-M1</maven.install.plugin>
-        <maven.jar.plugin>3.1.2</maven.jar.plugin>
         <maven.licence.plugin>3.0</maven.licence.plugin>
-        <maven.source.plugin>3.1.0</maven.source.plugin>
 
         <gwt.version>2.9.0</gwt.version>
         <junit.version>4.12</junit.version>
