@@ -69,7 +69,7 @@
         <maven.licence.plugin>3.0</maven.licence.plugin>
         <maven.source.plugin>3.2.1</maven.source.plugin>
 
-        <elemental2.version>1.0.0</elemental2.version>
+        <elemental2.version>1.0.0-RC1</elemental2.version>
     </properties>
 
     <dependencies>

@@ -49,7 +49,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final boolean getBoolean(int index) {
-    return Js.isTruthy(this.<JsArray<Object>>cast().getAtAsAny(index));
+    return Js.isTruthy(this.<JsArray<Object>>cast().getAnyAt(index));
   }
 
   /**
@@ -60,7 +60,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final double getNumber(int index) {
-    return Js.coerceToDouble(this.<JsArray<Object>>cast().getAtAsAny(index));
+    return Js.coerceToDouble(this.<JsArray<Object>>cast().getAnyAt(index));
   }
 
   /**
@@ -72,7 +72,7 @@ public class JsArrayMixed extends JavaScriptObject {
   @JsOverlay
   public final <T extends JavaScriptObject> T getObject(int index) {
     return this.<JsArray<Object>>cast().getAt(index) != null
-        ? this.<JsArray<Object>>cast().getAtAsAny(index).<T>cast()
+        ? this.<JsArray<Object>>cast().getAnyAt(index).<T>cast()
         : null;
   }
 

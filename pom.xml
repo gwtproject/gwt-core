@@ -45,7 +45,7 @@
     <modules>
         <module>gwt-core</module>
         <module>gwt-core-gwt2-tests</module>
-        <module>gwt-core-j2cl-tests</module>
+<!--        <module>gwt-core-j2cl-tests</module>-->
     </modules>
 
     <properties>
