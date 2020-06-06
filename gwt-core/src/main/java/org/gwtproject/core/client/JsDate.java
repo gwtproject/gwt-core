@@ -21,7 +21,7 @@ import jsinterop.annotations.JsType;
 
 /** A simple wrapper around a native JS Date object. */
 @Deprecated
-@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+@JsType(isNative = true, name = "Date", namespace = JsPackage.GLOBAL)
 public class JsDate extends JavaScriptObject {
 
   /** Creates a new date with the current time. */
