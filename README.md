@@ -140,21 +140,3 @@ Some basic guidlines to follow:
  * Overlay methods need to be marked with `@JsOverlay`, and continue to need to be effectively final (i.e. never 
  overridden), but no longer need to be marked as `final`.
 
-
-### Dependency
-
-```xml
-<dependency>
-    <groupId>org.gwtproject.core</groupId>
-    <artifactId>gwt-core</artifactId>
-    <version>1.0-SNAPSHOT</version>
-</dependency>
-```
-
-### Instructions
-To build gwt-core:
-
-* run `mvn clean install`
-
-on the parent directory. This will build the artifact and run tests against the JVM, J2CL, and GWT2.
-
