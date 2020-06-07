@@ -4,7 +4,7 @@
 
     <groupId>org.gwtproject.core</groupId>
     <artifactId>gwt-core</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>gwt-lib</packaging>
 
     <name>GWT Core</name>
@@ -51,6 +51,7 @@
         <maven.licence.plugin>3.0</maven.licence.plugin>
         <maven.source.plugin>3.2.1</maven.source.plugin>
         <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
+        <maven.flatten.plugin>1.1.0</maven.flatten.plugin>
 
         <elemental2.version>1.0.0</elemental2.version>
     </properties>
@@ -136,6 +137,31 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven.deploy.plugin}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${maven.flatten.plugin}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

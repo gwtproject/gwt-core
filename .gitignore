@@ -228,3 +228,4 @@ war/
 
 # target folder
 */target/*
+.flattened-pom.xml
