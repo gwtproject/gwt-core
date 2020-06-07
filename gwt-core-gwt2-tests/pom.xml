@@ -54,7 +54,7 @@
         <maven.gwt.plugin>1.0.0</maven.gwt.plugin>
         <maven.install.plugin>3.0.0-M1</maven.install.plugin>
         <maven.jar.plugin>3.1.2</maven.jar.plugin>
-        <maven.licence.plugin>3.0</maven.licence.plugin>
+        <maven.license.plugin>3.0</maven.license.plugin>
         <maven.source.plugin>3.1.0</maven.source.plugin>
 
         <gwt.version>2.9.0</gwt.version>

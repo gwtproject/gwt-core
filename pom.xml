@@ -53,7 +53,7 @@
 
         <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
         <maven.fmt.plugin>2.5.1</maven.fmt.plugin>
-        <maven.licence.plugin>3.0</maven.licence.plugin>
+        <maven.license.plugin>3.0</maven.license.plugin>
         <maven.flatten.plugin>1.1.0</maven.flatten.plugin>
     </properties>
 
@@ -120,7 +120,7 @@
                     <!-- inherited by test projects -->
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>${maven.licence.plugin}</version>
+                    <version>${maven.license.plugin}</version>
                     <configuration>
                         <header>LICENSE.header</header>
                         <encoding>${project.build.sourceEncoding}</encoding>

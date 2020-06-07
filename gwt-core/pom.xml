@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright © 2019 The GWT Authors
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -48,7 +65,7 @@
         <maven.gpg.plugin>1.6</maven.gpg.plugin>
         <maven.gwt.plugin>1.0.0</maven.gwt.plugin>
         <maven.javadoc.plugin>3.1.1</maven.javadoc.plugin>
-        <maven.licence.plugin>3.0</maven.licence.plugin>
+        <maven.license.plugin>3.0</maven.license.plugin>
         <maven.source.plugin>3.2.1</maven.source.plugin>
         <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
         <maven.flatten.plugin>1.1.0</maven.flatten.plugin>
@@ -103,7 +120,7 @@
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
-                <version>${maven.licence.plugin}</version>
+                <version>${maven.license.plugin}</version>
                 <configuration>
                     <header>LICENSE.header</header>
                     <encoding>UTF-8</encoding>
@@ -116,7 +133,6 @@
                         <exclude>**/LICENSE</exclude>
                         <exclude>**/LICENSE.header</exclude>
                         <exclude>**/AUTHORS</exclude>
-                        <exclude>**/*.xml</exclude>
                         <exclude>src/test/resources/**</exclude>
                         <exclude>src/main/resources/**</exclude>
                     </excludes>

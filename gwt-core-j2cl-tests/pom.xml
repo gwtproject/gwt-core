@@ -54,7 +54,7 @@
         <maven.install.plugin>3.0.0-M1</maven.install.plugin>
         <maven.jar.plugin>3.1.2</maven.jar.plugin>
         <maven.j2cl.plugin>0.13-SNAPSHOT</maven.j2cl.plugin>
-        <maven.licence.plugin>3.0</maven.licence.plugin>
+        <maven.license.plugin>3.0</maven.license.plugin>
         <maven.surfire.plugin>3.0.0-M1</maven.surfire.plugin>
 
         <!-- CI -->
