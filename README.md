@@ -45,7 +45,7 @@ This project is not yet complete, there are doubtlessly better ways to handle so
 
 ## Instructions
 
-To build gwt-timer:
+To build gwt-core:
 
 * run `mvn clean install`
 
@@ -56,12 +56,12 @@ on the parent directory. This will build the artifact and run tests against the 
 
 ## System Requirements
 
-**GWT Timer requires GWT 2.9.0 or newer!**
+**GWT Core requires GWT 2.9.0 or newer!**
 
 
 ## Dependencies
 
-GWT Timer does not depend on any other module.
+GWT Core does not depend on any other module.
 
 
 ## Listing of classes from gwt-user's core
