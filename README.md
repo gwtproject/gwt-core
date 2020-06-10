@@ -40,19 +40,16 @@ This project is not yet complete, there are doubtlessly better ways to handle so
 3. Change the `import`s in your Java source files:
 
    ```java
-   import org.gwtproject.core.*;
+   import org.gwtproject.core.client.GWT;
    ```
 
 ## Instructions
 
 To build gwt-core:
 
-* run `mvn clean install`
+* run `mvn clean verify`
 
 on the parent directory. This will build the artifact and run tests against the JVM, J2CL, and GWT2.
-
-
-**Note: To build the module you need Maven 3.6.3 or newer**
 
 ## System Requirements
 

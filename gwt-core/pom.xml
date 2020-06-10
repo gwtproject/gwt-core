@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2019 The GWT Authors
+    Copyright © 2019 The GWT Project Authors
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -19,7 +19,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.gwtproject.core</groupId>
+    <parent>
+        <groupId>org.gwtproject.core</groupId>
+        <artifactId>gwt-core-parent</artifactId>
+        <version>dev</version>
+    </parent>
     <artifactId>gwt-core</artifactId>
     <version>${revision}</version>
     <packaging>gwt-lib</packaging>
@@ -28,7 +32,7 @@
     <description>GWT Core</description>
     <url>https://github.com/gwtproject/gwt-core</url>
     <organization>
-        <name>The GWT Authors</name>
+        <name>The GWT Project Authors</name>
         <url>https://github.com/gwtproject</url>
     </organization>
 
@@ -41,7 +45,7 @@
 
     <developers>
         <developer>
-            <name>The GWT Authors</name>
+            <name>The GWT Project Authors</name>
             <organization>The GWT Project Authors</organization>
             <url>https://github.com/gwtproject</url>
         </developer>
@@ -56,21 +60,10 @@
     <inceptionYear>2019</inceptionYear>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-
-        <maven.compiler.plugin>3.7.0</maven.compiler.plugin>
-        <maven.gpg.plugin>1.6</maven.gpg.plugin>
         <maven.gwt.plugin>1.0.0</maven.gwt.plugin>
-        <maven.javadoc.plugin>3.1.1</maven.javadoc.plugin>
-        <maven.license.plugin>3.0</maven.license.plugin>
+        <maven.gpg.plugin>1.6</maven.gpg.plugin>
+        <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
         <maven.source.plugin>3.2.1</maven.source.plugin>
-        <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
-        <maven.flatten.plugin>1.1.0</maven.flatten.plugin>
-
-        <elemental2.version>1.0.0</elemental2.version>
     </properties>
 
     <dependencies>
@@ -88,7 +81,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -98,7 +91,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M4</version>
+                <version>${maven.surfire.plugin}</version>
                 <executions>
                     <execution>
                         <id>test</id>
@@ -117,81 +110,17 @@
                     <moduleName>org.gwtproject.core.Core</moduleName>
                 </configuration>
             </plugin>
+            <!-- TODO: El Hoss: When clear, while the plugin fails to work on the GwtIncompatible.java file, remove -->
             <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>${maven.license.plugin}</version>
+                <groupId>com.coveo</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>${maven.fmt.plugin}</version>
                 <configuration>
-                    <header>LICENSE.header</header>
-                    <encoding>UTF-8</encoding>
-                    <skipExistingHeaders>true</skipExistingHeaders>
-                    <mapping>
-                        <java>SLASHSTAR_STYLE</java>
-                    </mapping>
-                    <excludes>
-                        <exclude>**/README.md</exclude>
-                        <exclude>**/LICENSE</exclude>
-                        <exclude>**/LICENSE.header</exclude>
-                        <exclude>**/AUTHORS</exclude>
-                        <exclude>src/test/resources/**</exclude>
-                        <exclude>src/main/resources/**</exclude>
-                    </excludes>
-                    <properties>
-                        <year>${project.inceptionYear}</year>
-                        <name>${project.organization.name}</name>
-                    </properties>
+                    <skip>true</skip>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>${maven.deploy.plugin}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-                <version>${maven.flatten.plugin}</version>
-                <configuration>
-                    <updatePomFile>true</updatePomFile>
-                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>flatten</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>flatten</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>flatten.clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 
     <profiles>
         <!-- release profile to create sources, javadoc, and sign all artifacts before uploading -->
