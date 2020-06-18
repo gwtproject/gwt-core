@@ -1,5 +1,5 @@
 #
-# Copyright © 2019 The GWT Project Authors
+# Copyright © 2018 The GWT Project Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,28 +14,19 @@
 # limitations under the License.
 #
 
-# This workflow will build a Java project with Maven
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
 name: CI
 
 on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java_version: [ 8 ]
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up ${{ matrix.java_version }}
-        uses: actions/setup-java@v1
-        with:
-          java-version: ${{ matrix.java_version }}
+
+      # TODO: cache dependencies (taking into accounts: Maven plugins, snapshots, etc.)
 
       - name: Build with Maven
-        run: mvn -B verify -V -B -ntp -e
+        run: JAVA_HOME=$JAVA_HOME_8_X64 mvn -V -B -ntp -U -e verify
 
