@@ -64,7 +64,7 @@
         <maven.license.plugin>3.0</maven.license.plugin>
         <maven.surfire.plugin>3.0.0-M1</maven.surfire.plugin>
 
-        <elemental2.version>1.0.0</elemental2.version>
+        <elemental2.version>1.1.0</elemental2.version>
         <junit.version>4.12</junit.version>
     </properties>
 
