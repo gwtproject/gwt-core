@@ -6,7 +6,7 @@
     <groupId>org.gwtproject.core</groupId>
     <artifactId>gwt-core-parent</artifactId>
 
-    <version>${revision}</version>
+    <version>dev</version>
 
     <packaging>pom</packaging>
 
@@ -15,7 +15,7 @@
     <url>https://github.com/gwtproject/gwt-core</url>
 
     <organization>
-        <name>The GWT Authors</name>
+        <name>The GWT Project Authors</name>
         <url>https://github.com/gwtproject</url>
     </organization>
 
@@ -28,7 +28,7 @@
 
     <developers>
         <developer>
-            <name>The GWT Authors</name>
+            <name>The GWT Project Authors</name>
             <organization>The GWT Project Authors</organization>
             <url>https://github.com/gwtproject</url>
         </developer>
@@ -49,22 +49,24 @@
     </modules>
 
     <properties>
+        <revision>HEAD-SNAPSHOT</revision>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
-        <maven.fmt.plugin>2.5.1</maven.fmt.plugin>
-        <maven.licence.plugin>3.0</maven.licence.plugin>
-        <maven.flatten.plugin>1.1.0</maven.flatten.plugin>
-    </properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.gwtproject.core</groupId>
-            <artifactId>gwt-core</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+        <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
+        <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
+        <maven.flatten.plugin>1.2.2</maven.flatten.plugin>
+        <maven.fmt.plugin>2.9</maven.fmt.plugin>
+        <maven.install.plugin>3.0.0-M1</maven.install.plugin>
+        <maven.license.plugin>3.0</maven.license.plugin>
+        <maven.surfire.plugin>3.0.0-M1</maven.surfire.plugin>
+
+        <elemental2.version>1.1.0</elemental2.version>
+        <junit.version>4.12</junit.version>
+    </properties>
 
     <build>
         <plugins>
@@ -81,20 +83,47 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>${maven.deploy.plugin}</version>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${maven.license.plugin}</version>
                 <configuration>
-                    <skip>true</skip>
+                    <header>LICENSE.header</header>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <skipExistingHeaders>true</skipExistingHeaders>
+                    <mapping>
+                        <java>SLASHSTAR_STYLE</java>
+                    </mapping>
+                    <excludes>
+                        <exclude>**/README.md</exclude>
+                        <exclude>**/LICENSE</exclude>
+                        <exclude>**/LICENSE.header</exclude>
+                        <exclude>**/AUTHORS</exclude>
+                        <exclude>**/src/test/resources/**</exclude>
+                        <exclude>**/src/main/resources/**</exclude>
+                        <exclude>**/pom.xml</exclude>
+                        <exclude>**/.flattened-pom.xml</exclude>
+                        <exclude>**/war</exclude>
+                        <exclude>**/gwt-unitcache</exclude>
+                    </excludes>
+                    <properties>
+                        <year>${project.inceptionYear}</year>
+                        <name>${project.organization.name}</name>
+                    </properties>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
                 <version>${maven.flatten.plugin}</version>
                 <configuration>
-                    <updatePomFile>true</updatePomFile>
-                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                    <flattenMode>oss</flattenMode>
                 </configuration>
                 <executions>
                     <execution>
@@ -117,34 +146,38 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <!-- inherited by test projects -->
-                    <groupId>com.mycila</groupId>
-                    <artifactId>license-maven-plugin</artifactId>
-                    <version>${maven.licence.plugin}</version>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin}</version>
                     <configuration>
-                        <header>LICENSE.header</header>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                        <skipExistingHeaders>true</skipExistingHeaders>
-                        <mapping>
-                            <java>SLASHSTAR_STYLE</java>
-                        </mapping>
-                        <includes>
-                            <include>src/test/java</include>
-                        </includes>
-                        <properties>
-                            <year>${project.inceptionYear}</year>
-                            <name>${project.organization.name}</name>
-                        </properties>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
                     </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Internal dependencies -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>gwt-core</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>

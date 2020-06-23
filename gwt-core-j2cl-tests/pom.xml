@@ -6,16 +6,17 @@
     <parent>
         <groupId>org.gwtproject.core</groupId>
         <artifactId>gwt-core-parent</artifactId>
-        <version>${revision}</version>
+        <version>dev</version>
     </parent>
     <artifactId>gwt-core-j2cl-tests</artifactId>
+    <version>${revision}</version>
 
     <name>GWT Core - J2CL Tests</name>
     <description>Test cases for the J2Cl tests</description>
     <url>https://github.com/gwtproject/gwt-core</url>
 
     <organization>
-        <name>The GWT Authors</name>
+        <name>The GWT Project Authors</name>
         <url>https://github.com/gwtproject</url>
     </organization>
 
@@ -28,7 +29,7 @@
 
     <developers>
         <developer>
-            <name>The GWT Authors</name>
+            <name>The GWT Project Authors</name>
             <organization>The GWT Project Authors</organization>
             <url>https://github.com/gwtproject</url>
         </developer>
@@ -43,26 +44,13 @@
     <inceptionYear>2019</inceptionYear>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-
-        <maven.compiler.plugin>3.7.0</maven.compiler.plugin>
-        <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
-        <maven.findbugs.plugin>3.0.5</maven.findbugs.plugin>
-        <maven.install.plugin>3.0.0-M1</maven.install.plugin>
-        <maven.jar.plugin>3.1.2</maven.jar.plugin>
-        <maven.j2cl.plugin>0.13-SNAPSHOT</maven.j2cl.plugin>
-        <maven.licence.plugin>3.0</maven.licence.plugin>
-        <maven.surfire.plugin>3.0.0-M1</maven.surfire.plugin>
+        <maven.j2cl.plugin>0.15-SNAPSHOT</maven.j2cl.plugin>
+        <maven.resource.plugin>3.1.0</maven.resource.plugin>
 
         <!-- CI -->
         <vertispan.j2cl.repo.url>https://repo.vertispan.com/j2cl/</vertispan.j2cl.repo.url>
-        <google.snapshot.repo.url>https://oss.sonatype.org/content/repositories/google-snapshots/</google.snapshot.repo.url>
 
         <j2cl.version>0.7-SNAPSHOT</j2cl.version>
-        <slf4j.version>1.7.5</slf4j.version>
     </properties>
 
     <dependencies>
@@ -85,13 +73,19 @@
             <version>${j2cl.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.gwtproject.core</groupId>
+            <artifactId>gwt-core</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${maven.resource.plugin}</version>
                 <executions>
                     <!-- Copy static test resources to web test folder. -->
                     <execution>
@@ -112,10 +106,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>com.vertispan.j2cl</groupId>
@@ -141,6 +131,14 @@
                 <version>${maven.surfire.plugin}</version>
                 <configuration>
                     <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven.deploy.plugin}</version>
+                <configuration>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>
