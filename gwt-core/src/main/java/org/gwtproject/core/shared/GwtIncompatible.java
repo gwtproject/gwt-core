@@ -35,16 +35,24 @@ import java.lang.annotation.Target;
  * <p><code>
  *     class A {
  *
- *       int field; @GwtIncompatible("incompatible class") class Inner { ....
+ *       int field;
+ *
+ *       &#64;GwtIncompatible("incompatible class")
+ *       class Inner {
+ *         ....
  *       }
  *
- *       @GwtIncompatible("incompatible field")
+ *       &#64;GwtIncompatible("incompatible field")
  *       int field2 = methodThatisNotSupportedbyGwt();
  *
- *       void method1() { }
+ *       void method1() {
+ *         ....
+ *       }
  *
- *       @GwtIncompatible("incompatbile method")
- *       void method2() {}
+ *       &#64;GwtIncompatible("incompatbile method")
+ *       void method2() {
+ *         ....
+ *       }
  *     }
  *   </code>
  *
