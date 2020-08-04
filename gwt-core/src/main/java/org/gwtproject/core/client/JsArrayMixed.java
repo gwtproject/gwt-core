@@ -66,6 +66,7 @@ public class JsArrayMixed extends JavaScriptObject {
   /**
    * Gets the {@link org.gwtproject.core.client.JavaScriptObject} at a given index.
    *
+   * @param <T> type extending JavaScriptObject
    * @param index the index to be retrieved
    * @return the {@code JavaScriptObject} at the given index, or <code>null</code> if none exists
    */
@@ -92,6 +93,8 @@ public class JsArrayMixed extends JavaScriptObject {
    * Convert each element of the array to a String and join them with a comma separator. The value
    * returned from this method may vary between browsers based on how JavaScript values are
    * converted into strings.
+   *
+   * @return all elements jointed into a String separated by comma
    */
   @JsOverlay
   public final String join() {
@@ -102,6 +105,9 @@ public class JsArrayMixed extends JavaScriptObject {
    * Convert each element of the array to a String and join them with a comma separator. The value
    * returned from this method may vary between browsers based on how JavaScript values are
    * converted into strings.
+   *
+   * @param separator separator to use
+   * @return all elements jointed into a String separated by the given separator
    */
   @JsOverlay
   public final String join(String separator) {
@@ -118,18 +124,32 @@ public class JsArrayMixed extends JavaScriptObject {
     return this.<JsArray<Object>>cast().length;
   }
 
-  /** Pushes the given boolean onto the end of the array. */
+  /**
+   * Pushes the given boolean onto the end of the array.
+   *
+   * @param value boolean value to push
+   */
   public final native void push(boolean value);
 
-  /** Pushes the given double onto the end of the array. */
+  /**
+   * Pushes the given double onto the end of the array.
+   *
+   * @param value double value to push
+   */
   public final native void push(double value);
 
   /**
    * Pushes the given {@link org.gwtproject.core.client.JavaScriptObject} onto the end of the array.
+   *
+   * @param value JavaScriptObject value to push
    */
   public final native void push(JavaScriptObject value);
 
-  /** Pushes the given String onto the end of the array. */
+  /**
+   * Pushes the given String onto the end of the array.
+   *
+   * @param value String value to push
+   */
   public final native void push(String value);
 
   /**
@@ -221,6 +241,7 @@ public class JsArrayMixed extends JavaScriptObject {
   /**
    * Shifts the first value off the array.
    *
+   * @param <T> type extending JavaScriptObject
    * @return the shifted {@link org.gwtproject.core.client.JavaScriptObject}
    */
   @JsOverlay

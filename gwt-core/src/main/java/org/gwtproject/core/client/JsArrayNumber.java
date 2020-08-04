@@ -58,6 +58,8 @@ public class JsArrayNumber extends JavaScriptObject {
    * Convert each element of the array to a String and join them with a comma separator. The value
    * returned from this method may vary between browsers based on how JavaScript values are
    * converted into strings.
+   *
+   * @return all elements jointed into a String separated by comma
    */
   @JsOverlay
   public final String join() {
@@ -68,6 +70,9 @@ public class JsArrayNumber extends JavaScriptObject {
    * Convert each element of the array to a String and join them with a comma separator. The value
    * returned from this method may vary between browsers based on how JavaScript values are
    * converted into strings.
+   *
+   * @param separator separator to use
+   * @return all elements jointed into a String separated by the given separator
    */
   @JsOverlay
   public final String join(String separator) {
@@ -84,7 +89,11 @@ public class JsArrayNumber extends JavaScriptObject {
     return this.<JsArray<Number>>cast().length;
   }
 
-  /** Pushes the given number onto the end of the array. */
+  /**
+   * Pushes the given number onto the end of the array.
+   *
+   * @param value double value to push
+   */
   public final native void push(double value);
 
   /**

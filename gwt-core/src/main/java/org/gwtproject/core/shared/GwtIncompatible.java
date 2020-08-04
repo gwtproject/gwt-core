@@ -34,20 +34,20 @@ import java.lang.annotation.Target;
  *
  * <p>{@code class A {
  *
- * <p>int field; @GwtIncompatible("incompatible class") class Inner { ....
+ * <p><p><p>int field; @GwtIncompatible("incompatible class") class Inner { ....
  * } @GwtIncompatible("incompatible field") int field2 = methodThatisNotSupportedbyGwt();
  *
- * <p>void method1() { } @GwtIncompatible("incompatbile method") void method2() {} } }
+ * <p><p><p>void method1() { } @GwtIncompatible("incompatbile method") void method2() {} } }
  *
  * <p>is seen by the Gwt compiler as
  *
  * <p>{@code class A {
  *
- * <p>int field;
+ * <p><p><p>int field;
  *
- * <p>void method1() { }
+ * <p><p><p>void method1() { }
  *
- * <p>} }
+ * <p><p><p>} }
  *
  * <p>Warning: this may have surprising effects when combined with method overloading or
  * inheritance.
@@ -63,6 +63,8 @@ public @interface GwtIncompatible {
    * An attribute that can be used to explain why the code is incompatible. A GwtIncompatible
    * annotation can have any number of attributes; attributes are for documentation purposes and are
    * ignored by the GWT compiler.
+   *
+   * @return reason why the test case is incompatible
    */
   String value() default "";
 }

@@ -33,7 +33,9 @@ public class ScriptInjector {
     private final String scriptBody;
     private Object window;
 
-    /** @param scriptBody The script text to install into the document. */
+    /**
+     * @param scriptBody The script text to install into the document.
+     */
     public FromString(String scriptBody) {
       this.scriptBody = scriptBody;
     }
@@ -71,6 +73,8 @@ public class ScriptInjector {
      * @param removeTag If true, remove the tag immediately after injecting the source. This shrinks
      *     the DOM, possibly at the expense of readability if you are debugging javaScript.
      *     <p>Default value is {@code true}.
+     *
+     * @return this
      */
     public FromString setRemoveTag(boolean removeTag) {
       this.removeTag = removeTag;
@@ -80,6 +84,8 @@ public class ScriptInjector {
     /**
      * @param window Specify which window to use to install the script. If not specified, the top
      *     current window GWT is loaded in is used.
+     *
+     * @return this
      */
     public FromString setWindow(Object window) {
       this.window = window;
@@ -150,6 +156,8 @@ public class ScriptInjector {
      * include timeout logic.
      *
      * @param callback callback that gets invoked asynchronously.
+     *
+     * @return this
      */
     public FromUrl setCallback(Callback<Void, Exception> callback) {
       this.callback = callback;
@@ -160,6 +168,8 @@ public class ScriptInjector {
      * @param removeTag If true, remove the tag after the script finishes loading. This shrinks the
      *     DOM, possibly at the expense of readability if you are debugging javaScript.
      *     <p>Default value is {@code false}, but this may change in a future release.
+     *
+     * @return this
      */
     public FromUrl setRemoveTag(boolean removeTag) {
       this.removeTag = removeTag;
@@ -173,6 +183,8 @@ public class ScriptInjector {
      * </code>
      *
      * @param window Specifies which window to install in.
+     *
+     * @return this
      */
     public FromUrl setWindow(Object window) {
       this.window = Js.uncheckedCast(window);
@@ -193,6 +205,8 @@ public class ScriptInjector {
    * Build an injection call for directly setting the script text in the DOM.
    *
    * @param scriptBody the script text to be injected and immediately executed.
+   *
+   * @return new FromString
    */
   public static FromString fromString(String scriptBody) {
     return new FromString(scriptBody);
@@ -202,6 +216,8 @@ public class ScriptInjector {
    * Build an injection call for adding a script by URL.
    *
    * @param scriptUrl URL of the JavaScript to be injected.
+   *
+   * @return new FromUrl
    */
   public static FromUrl fromUrl(String scriptUrl) {
     return new FromUrl(scriptUrl);

@@ -24,6 +24,8 @@ public class Duration {
    * Returns the same result as {@link System#currentTimeMillis()}, but as a double. Because
    * emulated long math is significantly slower than doubles in Production Mode, this method is to
    * be preferred.
+   *
+   * @return current time in millis as double
    */
   public static double currentTimeMillis() {
     return JsDate.now();
@@ -34,12 +36,20 @@ public class Duration {
   /** Creates a new Duration whose start time is now. */
   public Duration() {}
 
-  /** Returns the number of milliseconds that have elapsed since this object was created. */
+  /**
+   * returns the number of milliseconds that have elapsed since this object was created.
+   *
+   * @return milliseconds
+   */
   public int elapsedMillis() {
     return Js.coerceToInt(currentTimeMillis() - start);
   }
 
-  /** Returns the time when the object was created. */
+  /**
+   * Returns the time when the object was created.
+   *
+   * @return creation time
+   */
   public double getStartMillis() {
     return start;
   }

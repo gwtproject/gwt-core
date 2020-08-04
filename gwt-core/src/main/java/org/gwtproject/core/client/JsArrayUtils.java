@@ -105,6 +105,7 @@ public class JsArrayUtils {
    * reference to the original array in prod mode, the source must not be modified while this copy
    * is in use or you will get different behavior between DevMode and prod mode.
    *
+   * @param <T> type extending JavaScriptObject
    * @param array source array
    * @return JS array, which may be a copy or an alias of the input array
    */
