@@ -23,7 +23,8 @@ import org.gwtproject.core.client.impl.SchedulerImpl;
  * org.gwtproject.core.client.GWT.UncaughtExceptionHandler} if one is installed.
  *
  * <p>NOTE: If you are using a timer to schedule a UI animation, use
- * org.gwtproject.animation.client.AnimationScheduler instead. The browser can optimize your
+ * See <a href="https://github.com/gwtproject/gwt-animation/blob/master/gwt-animation/src/main/java/org/gwtproject/animation/client/AnimationScheduler.java">org/gwtproject/animation/client/AnimationScheduler.java</a>
+ * instead. The browser can optimize your
  * animation for maximum performance.
  */
 public abstract class Scheduler {
