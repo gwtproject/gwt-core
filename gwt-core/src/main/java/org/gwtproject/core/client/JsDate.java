@@ -356,7 +356,6 @@ public class JsDate extends JavaScriptObject {
    * Sets the day of the month. Returns the millisecond representation of the adjusted date.
    *
    * @param dayOfMonth day of month
-   *
    * @return milliseconds of the adjusted date
    */
   public final native double setDate(int dayOfMonth);
@@ -365,7 +364,6 @@ public class JsDate extends JavaScriptObject {
    * Sets the year.
    *
    * @param year year of month
-   *
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setFullYear(int year);
@@ -375,7 +373,6 @@ public class JsDate extends JavaScriptObject {
    *
    * @param month month of month
    * @param year year of month
-   *
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setFullYear(int year, int month);
@@ -386,7 +383,6 @@ public class JsDate extends JavaScriptObject {
    * @param day day of month
    * @param month month of month
    * @param year year of month
-   *
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setFullYear(int year, int month, int day);
@@ -395,7 +391,6 @@ public class JsDate extends JavaScriptObject {
    * Sets the hour.
    *
    * @param hours hours of month
-   *
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setHours(int hours);
@@ -405,7 +400,6 @@ public class JsDate extends JavaScriptObject {
    *
    * @param hours hours of month
    * @param mins minutes of month
-   *
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setHours(int hours, int mins);
@@ -416,7 +410,6 @@ public class JsDate extends JavaScriptObject {
    * @param hours hours of month
    * @param mins minutes of month
    * @param secs seconds to set
-   *
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setHours(int hours, int mins, int secs);
@@ -522,27 +515,24 @@ public class JsDate extends JavaScriptObject {
    *
    * @param month month to set
    * @param year year to set
-   *             
    * @return millisecond representation of the adjusted date
    */
   public final native double setUTCFullYear(int year, int month);
 
   /**
-   * Sets the year, month, and day, in UTC. 
+   * Sets the year, month, and day, in UTC.
    *
    * @param day day to set
    * @param month month to set
    * @param year year to set
-   * 
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCFullYear(int year, int month, int day);
 
   /**
-   * Sets the hour, in UTC. 
-   *  
+   * Sets the hour, in UTC.
+   *
    * @param hours hours to set
-   *  
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCHours(int hours);
@@ -552,40 +542,36 @@ public class JsDate extends JavaScriptObject {
    *
    * @param hours hours to set
    * @param mins minutes to set
-   * 
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCHours(int hours, int mins);
 
   /**
-   * Sets the hour, minutes, and seconds, in UTC. 
+   * Sets the hour, minutes, and seconds, in UTC.
    *
    * @param hours hours to set
    * @param mins minutes to set
    * @param secs seconds to set
-   *             
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCHours(int hours, int mins, int secs);
 
   /**
-   * Sets the hour, minutes, seconds, and milliseconds, in UTC. 
+   * Sets the hour, minutes, seconds, and milliseconds, in UTC.
    *
    * @param hours hours to set
    * @param mins minutes to set
    * @param secs seconds to set
    * @param ms milliseconds to set
-   * 
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCHours(int hours, int mins, int secs, int ms);
 
-  /** 
-   * Sets the minutes, in UTC. 
+  /**
+   * Sets the minutes, in UTC.
    *
    * @param minutes minutes to set
-   * 
-   * @return the millisecond representation of the adjusted date. 
+   * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCMinutes(int minutes);
 
@@ -594,56 +580,50 @@ public class JsDate extends JavaScriptObject {
    *
    * @param minutes minutes to set
    * @param seconds seconds to set
-   *
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCMinutes(int minutes, int seconds);
 
   /**
-   * Sets the minutes, seconds, and milliseconds, in UTC. 
+   * Sets the minutes, seconds, and milliseconds, in UTC.
    *
    * @param minutes minutes to set
    * @param seconds seconds to set
    * @param millis milliseconds to set
-   * 
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCMinutes(int minutes, int seconds, int millis);
 
-  /** 
-   * Sets the month, in UTC. 
-   * 
+  /**
+   * Sets the month, in UTC.
+   *
    * @param month month to set
-   * 
-   * @return the millisecond representation of the adjusted date. 
+   * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCMonth(int month);
 
   /**
-   * Sets the month and day, in UTC. 
+   * Sets the month and day, in UTC.
    *
    * @param month month to set
    * @param dayOfMonth day of month to set
-   * 
-   * @return  the millisecond representation of the adjusted date.
+   * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCMonth(int month, int dayOfMonth);
 
   /**
-   *  Sets the seconds, in UTC. 
-   *  
-   * @param seconds seconds to set
+   * Sets the seconds, in UTC.
    *
-   *  @return the millisecond representation of the adjusted date.
+   * @param seconds seconds to set
+   * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCSeconds(int seconds);
 
   /**
-   * Sets the seconds and milliseconds, in UTC. 
+   * Sets the seconds and milliseconds, in UTC.
    *
    * @param seconds seconds to set
    * @param millis milliseconds to set
-   * 
    * @return the millisecond representation of the adjusted date.
    */
   public final native double setUTCSeconds(int seconds, int millis);
@@ -652,23 +632,22 @@ public class JsDate extends JavaScriptObject {
    * Sets a two-digit year.
    *
    * @param year year to set
-   *
    * @return the millisecond representation of the adjusted date.
    * @deprecated Use {@link #setFullYear(int)}.
    */
   @Deprecated
   public final native double setYear(int year);
 
-  /** 
+  /**
    * Get a date string in the local time zone
-   * 
-   * @return a date string in the local time zone. 
+   *
+   * @return a date string in the local time zone.
    */
   public final native String toDateString();
 
   /**
    * Get a date and time string in GMT.
-   * 
+   *
    * @return a date and time string in GMT.
    * @deprecated Use {@link #toUTCString()}.
    */
@@ -677,21 +656,20 @@ public class JsDate extends JavaScriptObject {
 
   /**
    * Get a date string in the local time zone according to local formatting conventions.
-   * 
+   *
    * @return a date string in the local time zone according to local formatting conventions.
    */
   public final native String toLocaleDateString();
 
   /**
-   * Get a date and time string in the local time zone according to local formatting
-   * conventions.
-   * 
+   * Get a date and time string in the local time zone according to local formatting conventions.
+   *
    * @return a date and time string in the local time zone according to local formatting
-   * conventions.
+   *     conventions.
    */
   public final native String toLocaleString();
 
-  /** 
+  /**
    * Get a time string in the local time zone according to local formatting conventions.
    *
    * @return a time string in the local time zone according to local formatting conventions.

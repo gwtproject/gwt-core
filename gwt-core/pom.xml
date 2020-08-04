@@ -93,15 +93,6 @@
                     <moduleName>org.gwtproject.core.Core</moduleName>
                 </configuration>
             </plugin>
-            <!-- TODO: El Hoss: When clear, while the plugin fails to work on the GwtIncompatible.java file, remove -->
-            <plugin>
-                <groupId>com.coveo</groupId>
-                <artifactId>fmt-maven-plugin</artifactId>
-                <version>${maven.fmt.plugin}</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>

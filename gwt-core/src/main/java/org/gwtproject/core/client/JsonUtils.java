@@ -31,7 +31,6 @@ public class JsonUtils {
    * Converts a value to JSON.
    *
    * @param obj object to stringify
-   *
    * @return JSON value of the JavaScript object
    */
   public static String stringify(JavaScriptObject obj) {
@@ -44,7 +43,6 @@ public class JsonUtils {
    * @param obj object to stringify
    * @param space controls the spacing in the final string. Successive levels in the stringification
    *     will each be indented by this string (or the first ten characters of it).
-   *
    * @return JSON value of the JavaScript object
    */
   public static String stringify(JavaScriptObject obj, String space) {
@@ -56,7 +54,6 @@ public class JsonUtils {
    * characters, quotes and backslashes are not affected.
    *
    * @param toEscape String to escape
-   *
    * @return same String
    */
   public static String escapeJsonForEval(String toEscape) {
@@ -73,7 +70,6 @@ public class JsonUtils {
    * Escapes a value
    *
    * @param toEscape value to escape
-   *
    * @return a quoted, escaped JSON String.
    */
   public static String escapeValue(String toEscape) {
@@ -117,8 +113,8 @@ public class JsonUtils {
    * large texts but less lenient than this one for invalid JSON.
    *
    * @param text text to test
-   *
-   * @return true, always, all impls are safeEval now, never actually calling eval, they are all safe
+   * @return true, always, all impls are safeEval now, never actually calling eval, they are all
+   *     safe
    */
   public static boolean safeToEval(String text) {
     // Remove quoted strings and disallow anything except:

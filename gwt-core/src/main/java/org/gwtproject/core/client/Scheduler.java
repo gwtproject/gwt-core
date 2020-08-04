@@ -22,20 +22,15 @@ import org.gwtproject.core.client.impl.SchedulerImpl;
  * objects executed by the scheduler will be passed to the {@link
  * org.gwtproject.core.client.GWT.UncaughtExceptionHandler} if one is installed.
  *
- * <p>NOTE: If you are using a timer to schedule a UI animation, use
- * See <a href="https://github.com/gwtproject/gwt-animation/blob/master/gwt-animation/src/main/java/org/gwtproject/animation/client/AnimationScheduler.java">org/gwtproject/animation/client/AnimationScheduler.java</a>
- * instead. The browser can optimize your
- * animation for maximum performance.
+ * <p>NOTE: If you are using a timer to schedule a UI animation, use See <a
+ * href="https://github.com/gwtproject/gwt-animation/blob/master/gwt-animation/src/main/java/org/gwtproject/animation/client/AnimationScheduler.java">org/gwtproject/animation/client/AnimationScheduler.java</a>
+ * instead. The browser can optimize your animation for maximum performance.
  */
 public abstract class Scheduler {
 
-  /**
-   * General-purpose Command interface for tasks that repeat.
-   */
+  /** General-purpose Command interface for tasks that repeat. */
   public interface RepeatingCommand {
-    /**
-     * @return true if the RepeatingCommand should be invoked again.
-     */
+    /** @return true if the RepeatingCommand should be invoked again. */
     boolean execute();
   }
 
