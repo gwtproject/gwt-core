@@ -25,7 +25,7 @@ import jsinterop.annotations.JsType;
  *
  * <p>This class may not be directly instantiated, and can only be returned from a native method.
  * For example, <code>
- * native JsArray<JavaScriptObject> getNativeArray() /*-{
+ * native JsArray&lt;JavaScriptObject&gt; getNativeArray() /*-{
  *   return [
  *     { x: 0, y: 1},
  *     { x: 2, y: 3},
@@ -57,6 +57,8 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
    * Convert each element of the array to a String and join them with a comma separator. The value
    * returned from this method may vary between browsers based on how JavaScript values are
    * converted into strings.
+   *
+   * @return resulting String
    */
   @JsOverlay
   public final String join() {
@@ -67,6 +69,9 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
    * Convert each element of the array to a String and join them with a comma separator. The value
    * returned from this method may vary between browsers based on how JavaScript values are
    * converted into strings.
+   *
+   * @param separator separator to use
+   * @return String containing all elements of the array. Each element separated using the separator
    */
   @JsOverlay
   public final String join(String separator) {
@@ -83,7 +88,11 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
     return this.<elemental2.core.JsArray<T>>cast().length;
   }
 
-  /** Pushes the given value onto the end of the array. */
+  /**
+   * Pushes the given value onto the end of the array.
+   *
+   * @param value value to push
+   */
   public final native void push(T value);
 
   /**

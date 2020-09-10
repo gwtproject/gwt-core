@@ -38,7 +38,11 @@ import jsinterop.base.Js;
 @Deprecated
 @JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
 public class JavaScriptObject {
-  /** Returns a new array. */
+  /**
+   * Returns a new array.
+   *
+   * @return a new array
+   */
   @JsOverlay
   public static JavaScriptObject createArray() {
     return Js.cast(new JsArray<>());
@@ -49,19 +53,30 @@ public class JavaScriptObject {
    *
    * <p>Consider using this method in performance critical code instead of using {@link
    * #createArray()}, since this gives more hints to the underlying JavaScript VM for optimizations.
+   *
+   * @param size size of array
+   * @return array as JavaScript object
    */
   @JsOverlay
   public static JavaScriptObject createArray(int size) {
     return Js.cast(new JsArray<>((double) size));
   }
 
-  /** Returns an empty function. */
+  /**
+   * Returns an empty function.
+   *
+   * @return function as JavaScript object
+   */
   @JsOverlay
   public static JavaScriptObject createFunction() {
     return Js.cast(new Function());
   }
 
-  /** Returns a new object. */
+  /**
+   * Returns a new object.
+   *
+   * @return object as JavaScript object
+   */
   @JsOverlay
   public static JavaScriptObject createObject() {
     return new JavaScriptObject();

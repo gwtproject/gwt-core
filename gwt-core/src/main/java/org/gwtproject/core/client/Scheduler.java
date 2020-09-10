@@ -22,15 +22,15 @@ import org.gwtproject.core.client.impl.SchedulerImpl;
  * objects executed by the scheduler will be passed to the {@link
  * org.gwtproject.core.client.GWT.UncaughtExceptionHandler} if one is installed.
  *
- * <p>NOTE: If you are using a timer to schedule a UI animation, use {@link
- * com.google.gwt.animation.client.AnimationScheduler} instead. The browser can optimize your
- * animation for maximum performance.
+ * <p>NOTE: If you are using a timer to schedule a UI animation, use See <a
+ * href="https://github.com/gwtproject/gwt-animation/blob/master/gwt-animation/src/main/java/org/gwtproject/animation/client/AnimationScheduler.java">org/gwtproject/animation/client/AnimationScheduler.java</a>
+ * instead. The browser can optimize your animation for maximum performance.
  */
 public abstract class Scheduler {
 
   /** General-purpose Command interface for tasks that repeat. */
   public interface RepeatingCommand {
-    /** Returns true if the RepeatingCommand should be invoked again. */
+    /** @return true if the RepeatingCommand should be invoked again. */
     boolean execute();
   }
 
@@ -40,12 +40,20 @@ public abstract class Scheduler {
     void execute();
   }
 
-  /** Returns the default implementation of the Scheduler API. */
+  /**
+   * Returns the default implementation of the Scheduler API.
+   *
+   * @return instance of Scheduler
+   */
   public static Scheduler get() {
     return SchedulerImpl.INSTANCE;
   }
 
-  /** A deferred command is executed after the browser event loop returns. */
+  /**
+   * A deferred command is executed after the browser event loop returns.
+   *
+   * @param cmd the command to execute
+   */
   public abstract void scheduleDeferred(ScheduledCommand cmd);
 
   /**
@@ -56,6 +64,8 @@ public abstract class Scheduler {
    *
    * <p>If an entry command schedules another entry command, the second command will be executed
    * before control flow continues to the GWT-generated code.
+   *
+   * @param cmd the command to execute
    */
   @Deprecated
   public abstract void scheduleEntry(RepeatingCommand cmd);
@@ -66,6 +76,8 @@ public abstract class Scheduler {
    *
    * <p>If an entry command schedules another entry command, the second command will be executed
    * before control flow continues to the GWT-generated code.
+   *
+   * @param cmd the command to execute
    */
   @Deprecated
   public abstract void scheduleEntry(ScheduledCommand cmd);
@@ -78,6 +90,8 @@ public abstract class Scheduler {
    *
    * <p>If a finally command schedules another finally command, the second command will be executed
    * before control flow returns to the browser.
+   *
+   * @param cmd the command to execute
    */
   public abstract void scheduleFinally(RepeatingCommand cmd);
 
@@ -99,7 +113,9 @@ public abstract class Scheduler {
    * }
    * </pre>
    *
-   * @see org.gwtproject.dom.client.StyleInjector
+   * see org.gwtproject.dom.client.StyleInjector
+   *
+   * @param cmd the command to execute
    */
   public abstract void scheduleFinally(ScheduledCommand cmd);
 
