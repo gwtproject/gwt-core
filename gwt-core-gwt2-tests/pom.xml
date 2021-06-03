@@ -76,11 +76,6 @@
             <artifactId>gwt-core</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-driver</artifactId>
-            <version>3.141.59</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -107,8 +102,29 @@
     </build>
 
     <profiles>
+        <!-- This profile will run the test in firefox and chrome instead of htmlunit. To use it,
+             first start a local selenium hub using the same version as specified below, and start
+             the desired browsers. Default properties below expect that the hub will be running on
+             localhost:4444, and that the browsers will be able to connect to localhost where this
+             maven process is running - if using docker to run those containers, you will need to
+             specify -Dwebdriver.test.host= to be the hostname that those containers can reach.
+        -->
         <profile>
-            <id>github-ci-selenium</id>
+            <id>webdriver-tests</id>
+            <properties>
+                <webdriver.test.host>localhost</webdriver.test.host>
+                <webdriver.hub.host>localhost</webdriver.hub.host>
+                <webdriver.hub.port>4444</webdriver.hub.port>
+                <webdriver.browsers>firefox,chrome</webdriver.browsers>
+                <webdriver.version>3.141.59</webdriver.version>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-remote-driver</artifactId>
+                    <version>${webdriver.version}</version>
+                </dependency>
+            </dependencies>
             <build>
                 <plugins>
                     <plugin>
@@ -116,11 +132,11 @@
                         <artifactId>gwt-maven-plugin</artifactId>
                         <configuration>
                             <systemProperties>
-                                <webdriver.test.host>testHost</webdriver.test.host>
+                                <webdriver.test.host>${webdriver.test.host}</webdriver.test.host>
                             </systemProperties>
                             <testArgs>
                                 <testArg>-runStyle</testArg>
-                                <testArg>org.gwtproject.junit.RunStyleWebDriver:http://localhost:4444?firefox,chrome</testArg>
+                                <testArg>org.gwtproject.junit.RunStyleWebDriver:http://${webdriver.hub.host}:${webdriver.hub.port}?${webdriver.browsers}</testArg>
                             </testArgs>
                         </configuration>
                     </plugin>

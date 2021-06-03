@@ -21,16 +21,11 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      options: --network-alias testHost
-
-    env:
-      SELENIUM_HUB: hub
-      TEST_HOST: testHost
-
     services:
       hub:
         image: selenium/hub:3.141.59-gold
+        ports:
+          - 4444:4444
       firefox:
         image: selenium/node-firefox:3.141.59-gold
         env:
@@ -47,5 +42,5 @@ jobs:
       # TODO: cache dependencies (taking into accounts: Maven plugins, snapshots, etc.)
 
       - name: Build with Maven
-        run: JAVA_HOME=$JAVA_HOME_8_X64 mvn -V -B -ntp -U -e verify -Pgithub-ci-selenium
+        run: JAVA_HOME=$JAVA_HOME_8_X64 mvn -V -B -ntp -U -e verify -Pwebdriver-tests -Dwebdriver.test.host=$(hostname)
 
