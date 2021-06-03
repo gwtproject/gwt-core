@@ -76,6 +76,11 @@
             <artifactId>gwt-core</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>3.141.59</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -100,4 +105,27 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>github-ci-selenium</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>net.ltgt.gwt.maven</groupId>
+                        <artifactId>gwt-maven-plugin</artifactId>
+                        <configuration>
+                            <systemProperties>
+                                <webdriver.test.host>testHost</webdriver.test.host>
+                            </systemProperties>
+                            <testArgs>
+                                <testArg>-runStyle</testArg>
+                                <testArg>org.gwtproject.junit.RunStyleWebDriver:http://localhost:4444?firefox,chrome</testArg>
+                            </testArgs>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

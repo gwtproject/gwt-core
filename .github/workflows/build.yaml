@@ -21,12 +21,31 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      options: --network-alias testHost
 
+    env:
+      SELENIUM_HUB: hub
+      TEST_HOST: testHost
+
+    services:
+      hub:
+        image: selenium/hub:3.141.59-gold
+      firefox:
+        image: selenium/node-firefox:3.141.59-gold
+        env:
+          HUB_HOST: hub
+          HUB_PORT: 4444
+      chrome:
+        image: selenium/node-chrome:3.141.59-gold
+        env:
+          HUB_HOST: hub
+          HUB_PORT: 4444
     steps:
       - uses: actions/checkout@v2
 
       # TODO: cache dependencies (taking into accounts: Maven plugins, snapshots, etc.)
 
       - name: Build with Maven
-        run: JAVA_HOME=$JAVA_HOME_8_X64 mvn -V -B -ntp -U -e verify
+        run: JAVA_HOME=$JAVA_HOME_8_X64 mvn -V -B -ntp -U -e verify -Pgithub-ci-selenium
 
