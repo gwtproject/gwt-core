@@ -19,45 +19,80 @@ import com.google.gwt.core.ext.TreeLogger;
 import com.google.gwt.core.ext.UnableToCompleteException;
 import com.google.gwt.junit.JUnitShell;
 import com.google.gwt.junit.RunStyle;
-import java.net.*;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openqa.selenium.Platform;
+import java.util.Map;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class RunStyleWebDriver extends RunStyle {
+public abstract class RunStyleAbstractRemoteWebDriver extends RunStyle {
+
+  public static class RemoteWebDriverConfiguration {
+    private String remoteWebDriverUrl;
+    private List<Map<String, ?>> browserCapabilities;
+
+    public String getRemoteWebDriverUrl() {
+      return remoteWebDriverUrl;
+    }
+
+    public void setRemoteWebDriverUrl(String remoteWebDriverUrl) {
+      this.remoteWebDriverUrl = remoteWebDriverUrl;
+    }
+
+    public List<Map<String, ?>> getBrowserCapabilities() {
+      return browserCapabilities;
+    }
+
+    public void setBrowserCapabilities(List<Map<String, ?>> browserCapabilities) {
+      this.browserCapabilities = browserCapabilities;
+    }
+  }
+
+  public class ConfigurationException extends Exception {}
 
   private List<RemoteWebDriver> browsers = new ArrayList<>();
   private Thread keepalive;
 
-  public RunStyleWebDriver(JUnitShell shell) {
+  public RunStyleAbstractRemoteWebDriver(JUnitShell shell) {
     super(shell);
   }
 
+  /**
+   * Validates the arguments for the specific subclass, and creates a configuration that describes
+   * how to run the tests.
+   *
+   * @param args the command line argument string passed from JUnitShell
+   * @return the configuration to use when running these tests
+   */
+  protected abstract RemoteWebDriverConfiguration readConfiguration(String args)
+      throws ConfigurationException;
+
   @Override
-  public int initialize(String args) {
-    if (args == null || args.length() == 0) {
-      getLogger()
-          .log(
-              TreeLogger.ERROR,
-              "WebDriver runstyle requires a parameter of the form protocol://hostname:port?browser1[,browser2]");
+  public final int initialize(String args) {
+    final RemoteWebDriverConfiguration config;
+    try {
+      config = readConfiguration(args);
+    } catch (ConfigurationException failed) {
+      // log should already have details about what went wrong, we will just return the failure
+      // value
       return -1;
     }
-    String[] parts = args.split("\\?");
-    URL remoteAddress = null;
+
+    final URL remoteAddress;
     try {
-      remoteAddress = new URL(parts[0] + "/wd/hub");
+      remoteAddress = new URL(config.getRemoteWebDriverUrl());
     } catch (MalformedURLException e) {
       getLogger().log(TreeLogger.ERROR, e.getMessage(), e);
       return -1;
     }
 
-    // build each driver based on parts[1].split(",")
-    String[] browserNames = parts[1].split(",");
-
-    for (String browserName : browserNames) {
-      DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
+    for (Map<String, ?> capabilityMap : config.getBrowserCapabilities()) {
+      DesiredCapabilities capabilities = new DesiredCapabilities(capabilityMap);
 
       try {
         RemoteWebDriver wd = new RemoteWebDriver(remoteAddress, capabilities);

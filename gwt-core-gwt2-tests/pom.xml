@@ -136,7 +136,7 @@
                             </systemProperties>
                             <testArgs>
                                 <testArg>-runStyle</testArg>
-                                <testArg>org.gwtproject.junit.RunStyleWebDriver:http://${webdriver.hub.host}:${webdriver.hub.port}?${webdriver.browsers}</testArg>
+                                <testArg>org.gwtproject.junit.RunStyleRemoteWebDriver:http://${webdriver.hub.host}:${webdriver.hub.port}?${webdriver.browsers}</testArg>
                             </testArgs>
                         </configuration>
                     </plugin>
