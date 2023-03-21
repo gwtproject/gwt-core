@@ -135,13 +135,14 @@ public final class GWT {
     Window.OnerrorFn original = window.onerror;
     if (original == null) {
       window.onerror = onerrorFn;
+    } else {
+      window.onerror =
+          (p0, p1, p2, p3, p4) -> {
+            onerrorFn.onInvoke(p0, p1, p2, p3, p4);
+            original.onInvoke(p0, p1, p2, p3, p4);
+            return null;
+          };
     }
-    window.onerror =
-        (p0, p1, p2, p3, p4) -> {
-          onerrorFn.onInvoke(p0, p1, p2, p3, p4);
-          original.onInvoke(p0, p1, p2, p3, p4);
-          return null;
-        };
   }
 
   /**
