@@ -20,6 +20,7 @@ import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
+import jsinterop.base.JsArrayLike;
 
 /**
  * A simple wrapper around a homogeneous native array of string values.
@@ -45,7 +46,7 @@ public class JsArrayString extends JavaScriptObject {
    */
   @JsOverlay
   public final String get(int index) {
-    String value = this.<JsArray<String>>cast().getAt(index);
+    String value = this.<JsArrayLike<String>>cast().getAt(index);
     return value == null ? null : value;
   }
 
@@ -81,7 +82,7 @@ public class JsArrayString extends JavaScriptObject {
    */
   @JsOverlay
   public final int length() {
-    return this.<JsArray<String>>cast().length;
+    return this.<JsArrayLike<String>>cast().getLength();
   }
 
   /**
@@ -102,7 +103,7 @@ public class JsArrayString extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, String value) {
-    this.<JsArray<String>>cast().setAt(index, Js.uncheckedCast(value));
+    this.<JsArrayLike<String>>cast().setAt(index, Js.uncheckedCast(value));
   }
 
   /**

@@ -212,6 +212,22 @@ public class JsArrayTest extends GWTTestCase {
     assertEquals(0, jsArray.length());
   }
 
+  /**
+   * Checks that get, length and set methods work even if the JS object
+   * is not actual Array
+   */
+  public void testFakeArray() {
+    JsArray<JsPoint> points = makeFakeArray();
+    points.set(0, makeJsPoint(1, 2));
+    JsPoint pt = points.get(0);
+    assertEquals(1, pt.x());
+    assertEquals(7, points.length());
+  }
+
+  private native JsArray<JsPoint> makeFakeArray() /*-{
+    return {length: 7}
+  }-*/;
+
   private native JsArray<JsPoint> makeJsArray() /*-{
       return [
         { x: 0, y: 1, toString: function() { return 'JsPoint';} },

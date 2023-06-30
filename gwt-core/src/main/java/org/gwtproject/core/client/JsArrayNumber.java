@@ -20,6 +20,7 @@ import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
+import jsinterop.base.JsArrayLike;
 
 /**
  * A simple wrapper around a homogeneous native array of numeric values.
@@ -51,7 +52,7 @@ public class JsArrayNumber extends JavaScriptObject {
    */
   @JsOverlay
   public final double get(int index) {
-    return this.<JsArray<Number>>cast().getAt(index).doubleValue();
+    return this.<JsArrayLike<Number>>cast().getAt(index).doubleValue();
   }
 
   /**
@@ -86,7 +87,7 @@ public class JsArrayNumber extends JavaScriptObject {
    */
   @JsOverlay
   public final int length() {
-    return this.<JsArray<Number>>cast().length;
+    return this.<JsArrayLike<Number>>cast().getLength();
   }
 
   /**
@@ -107,7 +108,7 @@ public class JsArrayNumber extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, double value) {
-    this.<JsArray<Number>>cast().setAt(index, Js.uncheckedCast(value));
+    this.<JsArrayLike<Number>>cast().setAt(index, Js.uncheckedCast(value));
   }
 
   /**

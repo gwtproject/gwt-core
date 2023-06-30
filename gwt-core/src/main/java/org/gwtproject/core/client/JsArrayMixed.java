@@ -20,6 +20,7 @@ import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
+import jsinterop.base.JsArrayLike;
 
 /**
  * A simple wrapper around an heterogeneous native array of values.
@@ -49,7 +50,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final boolean getBoolean(int index) {
-    return Js.isTruthy(this.<JsArray<Object>>cast().getAtAsAny(index));
+    return Js.isTruthy(this.<JsArrayLike<Object>>cast().getAtAsAny(index));
   }
 
   /**
@@ -60,7 +61,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final double getNumber(int index) {
-    return Js.coerceToDouble(this.<JsArray<Object>>cast().getAtAsAny(index));
+    return Js.coerceToDouble(this.<JsArrayLike<Object>>cast().getAtAsAny(index));
   }
 
   /**
@@ -72,8 +73,8 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final <T extends JavaScriptObject> T getObject(int index) {
-    return this.<JsArray<Object>>cast().getAt(index) != null
-        ? this.<JsArray<Object>>cast().getAtAsAny(index).<T>cast()
+    return this.<JsArrayLike<Object>>cast().getAt(index) != null
+        ? this.<JsArrayLike<Object>>cast().getAtAsAny(index).<T>cast()
         : null;
   }
 
@@ -85,7 +86,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final String getString(int index) {
-    Object value = this.<JsArray<Object>>cast().getAt(index);
+    Object value = this.<JsArrayLike<Object>>cast().getAt(index);
     return value == null ? null : value.toString();
   }
 
@@ -121,7 +122,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final int length() {
-    return this.<JsArray<Object>>cast().length;
+    return this.<JsArrayLike<Object>>cast().getLength();
   }
 
   /**
@@ -163,7 +164,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, boolean value) {
-    this.<JsArray<Object>>cast().setAt(index, value);
+    this.<JsArrayLike<Object>>cast().setAt(index, value);
   }
 
   /**
@@ -177,7 +178,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, double value) {
-    this.<JsArray<Object>>cast().setAt(index, value);
+    this.<JsArrayLike<Object>>cast().setAt(index, value);
   }
 
   /**
@@ -191,7 +192,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, JavaScriptObject value) {
-    this.<JsArray<Object>>cast().setAt(index, value);
+    this.<JsArrayLike<Object>>cast().setAt(index, value);
   }
 
   /**
@@ -205,7 +206,7 @@ public class JsArrayMixed extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, String value) {
-    this.<JsArray<Object>>cast().setAt(index, value);
+    this.<JsArrayLike<Object>>cast().setAt(index, value);
   }
 
   /**

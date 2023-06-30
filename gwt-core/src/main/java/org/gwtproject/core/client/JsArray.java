@@ -18,6 +18,7 @@ package org.gwtproject.core.client;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
+import jsinterop.base.JsArrayLike;
 
 /**
  * A simple wrapper around a homogeneous native array of {@link
@@ -50,7 +51,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
    */
   @JsOverlay
   public final T get(int index) {
-    return this.<elemental2.core.JsArray<T>>cast().getAt(index);
+    return this.<JsArrayLike<T>>cast().getAt(index);
   }
 
   /**
@@ -85,7 +86,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
    */
   @JsOverlay
   public final int length() {
-    return this.<elemental2.core.JsArray<T>>cast().length;
+    return this.<JsArrayLike<T>>cast().getLength();
   }
 
   /**
@@ -106,7 +107,7 @@ public class JsArray<T extends JavaScriptObject> extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, T value) {
-    this.<elemental2.core.JsArray<T>>cast().setAt(index, value);
+    this.<JsArrayLike<T>>cast().setAt(index, value);
   }
 
   /**
