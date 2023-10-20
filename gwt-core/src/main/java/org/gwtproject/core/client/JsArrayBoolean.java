@@ -18,6 +18,7 @@ package org.gwtproject.core.client;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
+import jsinterop.base.JsArrayLike;
 
 /**
  * A simple wrapper around a homogeneous native array of boolean values.
@@ -46,7 +47,7 @@ public class JsArrayBoolean extends JavaScriptObject {
    */
   @JsOverlay
   public final boolean get(int index) {
-    return this.<elemental2.core.JsArray<Boolean>>cast().getAt(index);
+    return this.<JsArrayLike<Boolean>>cast().getAt(index);
   }
 
   /**
@@ -81,7 +82,7 @@ public class JsArrayBoolean extends JavaScriptObject {
    */
   @JsOverlay
   public final int length() {
-    return this.<elemental2.core.JsArray<Boolean>>cast().length;
+    return this.<JsArrayLike<Boolean>>cast().getLength();
   }
 
   /**
@@ -102,7 +103,7 @@ public class JsArrayBoolean extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, boolean value) {
-    this.<elemental2.core.JsArray<Boolean>>cast().setAt(index, value);
+    this.<JsArrayLike<Boolean>>cast().setAt(index, value);
   }
 
   /**

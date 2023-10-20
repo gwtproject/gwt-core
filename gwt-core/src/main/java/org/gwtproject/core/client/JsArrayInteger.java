@@ -19,6 +19,7 @@ import elemental2.core.JsArray;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
+import jsinterop.base.JsArrayLike;
 
 /**
  * A simple wrapper around a homogeneous native array of integer values.
@@ -49,7 +50,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final int get(int index) {
-    return (int) (double) this.<JsArray<Double>>cast().getAt(index);
+    return (int) (double) this.<JsArrayLike<Double>>cast().getAt(index);
   }
 
   /**
@@ -84,7 +85,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final int length() {
-    return this.<JsArray<Double>>cast().length;
+    return this.<JsArrayLike<Double>>cast().getLength();
   }
 
   /**
@@ -105,7 +106,7 @@ public class JsArrayInteger extends JavaScriptObject {
    */
   @JsOverlay
   public final void set(int index, int value) {
-    this.<JsArray<Double>>cast().setAt(index, (double) value);
+    this.<JsArrayLike<Double>>cast().setAt(index, (double) value);
   }
 
   /**
