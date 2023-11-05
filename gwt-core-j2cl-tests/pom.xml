@@ -44,7 +44,7 @@
     <inceptionYear>2019</inceptionYear>
 
     <properties>
-        <maven.j2cl.plugin>0.20</maven.j2cl.plugin>
+        <maven.j2cl.plugin>0.21.0</maven.j2cl.plugin>
         <maven.resource.plugin>3.1.0</maven.resource.plugin>
 
         <!-- CI -->
