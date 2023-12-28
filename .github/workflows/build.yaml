@@ -23,19 +23,23 @@ jobs:
     runs-on: ubuntu-latest
     services:
       hub:
-        image: selenium/hub:3.141.59-gold
+        image: selenium/hub:4.16.1-20231219
         ports:
-          - 4444:4444
+        - "4442:4442"
+        - "4443:4443"
+        - "4444:4444"
       firefox:
-        image: selenium/node-firefox:3.141.59-gold
+        image: selenium/node-firefox:4.16.1-20231219
         env:
-          HUB_HOST: hub
-          HUB_PORT: 4444
+          SE_EVENT_BUS_HOST: hub
+          SE_EVENT_BUS_PUBLISH_PORT: 4442
+          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
       chrome:
-        image: selenium/node-chrome:3.141.59-gold
+        image: selenium/node-chrome:4.16.1-20231219
         env:
-          HUB_HOST: hub
-          HUB_PORT: 4444
+          SE_EVENT_BUS_HOST: hub
+          SE_EVENT_BUS_PUBLISH_PORT: 4442
+          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
     steps:
       - uses: actions/checkout@v2
 
