@@ -20,7 +20,6 @@ import com.google.gwt.junit.JUnitShell;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class RunStyleRemoteWebDriver extends RunStyleAbstractRemoteWebDriver {
@@ -65,7 +64,8 @@ public class RunStyleRemoteWebDriver extends RunStyleAbstractRemoteWebDriver {
     String[] browserNames = parts[1].split(",");
     config.setBrowserCapabilities(new ArrayList<>());
     for (String browserName : browserNames) {
-      DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
+      DesiredCapabilities capabilities = new DesiredCapabilities();
+      capabilities.setBrowserName(browserName);
       config.getBrowserCapabilities().add(capabilities.asMap());
     }
 
